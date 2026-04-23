@@ -1,0 +1,5 @@
+# Set Theme
+--theme="Catppuccin Mocha"
+
+# Set Syntax Highlighting For Astro
+--map-syntax "*.astro:TypeScriptReact"
