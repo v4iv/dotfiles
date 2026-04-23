@@ -6,13 +6,44 @@ return {
 			"nvim-lua/plenary.nvim",
 			-- optional but recommended
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+			"nvim-tree/nvim-web-devicons",
+			"folke/todo-comments.nvim",
 		},
 		config = function()
+			local telescope = require("telescope")
 			local builtin = require("telescope.builtin")
+			local actions = require("telescope.actions")
+			local transform_mod = require("telescope.actions.mt").transform_mod
 			local map = vim.keymap.set
 
-			map("n", "<leader>ff", builtin.find_files, { desc = "telescope find files" })
-			map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
+			local trouble = require("trouble")
+			local trouble_telescope = require("trouble.sources.telescope")
+
+			-- or create your custom action
+			local custom_actions = transform_mod({
+				open_trouble_qflist = function(prompt_bufnr)
+					trouble.toggle("quickfix")
+				end,
+			})
+
+			telescope.setup({
+				defaults = {
+					path_display = { "smart" },
+					mappings = {
+						i = {
+							["<C-k>"] = actions.move_selection_previous, -- move to prev result
+							["<C-j>"] = actions.move_selection_next, -- move to next result
+							["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
+							["<C-t>"] = trouble_telescope.open,
+						},
+					},
+				},
+			})
+
+			telescope.load_extension("fzf")
+
+			map("n", "<leader>ff", builtin.find_files, { desc = "telescope fuzzy find files" })
+			map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "telescope fuzzy live grep" })
 			map(
 				"n",
 				"<leader>fz",
@@ -23,6 +54,7 @@ return {
 			map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
 			map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
 			map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
+			map("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "telescope fuzzy find recent files" })
 			map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help page" })
 			map(
 				"n",
@@ -30,12 +62,8 @@ return {
 				"<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
 				{ desc = "telescope find all files" }
 			)
-
-			-- Tree Sitter configurations
-			require("nvim-treesitter").setup({
-				highlight = { enable = true },
-				indent = { enable = true },
-			})
+			map("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+			map("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Find todos" })
 		end,
 	},
 }
