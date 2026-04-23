@@ -14,16 +14,15 @@
     ```
   - install formulas
 
-        ```
-        brew install bat btop cmatrix eza fd fzf gcc luarocks make neovim nmap \
-        nvm openjdk bun reattach-to-user-namespace \
-        ripgrep sl stow tmux tree tree-sitter-cli wget zoxide
-        ```
+    ```
+    brew install bat btop cmatrix eza fd fzf gcc luarocks make neovim nmap \
+    nvm openjdk bun reattach-to-user-namespace \
+    ripgrep sl stow tmux tree tree-sitter-cli wget zoxide
+    ```
 
-        and casks
+  - and casks
 
-        ```
-
+    ```
     brew install --cask font-jetbrains-mono-nerd-font
     ```
 
