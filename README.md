@@ -95,7 +95,7 @@
     ```
     \.DS_Store
     \.gitignore
-    \.READMEmd
+    READMEmd
     ```
   - cd/z into dotfiles directory
     ```
