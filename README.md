@@ -91,6 +91,12 @@
   - ```
     git clone https://github.com/v4iv/dotfiles.git
     ```
+  - make sure to have a `.stow-global-ignore` file in `$HOME`
+    ```
+    \.DS_Store
+    \.gitignore
+    \.READMEmd
+    ```
   - cd/z into dotfiles directory
     ```
     z ~/dotfiles
@@ -99,6 +105,11 @@
     ```
     stow .
     ```
+  - rebuild `bat` cache
+    ```
+    bat cache --build
+    ```
+
   - reload tmux from `$HOME`
     ```
     tmux source ~/.tmux.conf
