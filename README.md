@@ -25,9 +25,8 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
   - install formulas
 
     ```
-    brew install bat btop eza fd fzf gcc luarocks make neovim \
-      nvm openjdk bun reattach-to-user-namespace \
-      ripgrep sl stow tmux tree tree-sitter-cli wget zoxide
+    brew install bat eza fd fzf gcc luarocks make neovim \
+      reattach-to-user-namespace ripgrep stow tmux tree tree-sitter-cli zoxide
     ```
 
   - and casks
@@ -209,8 +208,34 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
     source ~/.zshrc
     ```
 
-## Other CLI tools to consider
+## Tools You Might Like That I Use
+
+- btop
+
+- cava
+
+- cmatrix
+
+- lazygit
+
+- metasploit
+
+- mpv
+
+- neofetch
+
+- nmap
+
+- openclaw
+
+- vitetris
+
+## Other CLI Tools I Am Considering
+
+- Sketchybar
 
 - TheFuck
+
 - Yazi
+
 - Yabai
