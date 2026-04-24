@@ -7,17 +7,26 @@ fi
 
 # ---- oh my zsh ----
 export ZSH="$HOME/.oh-my-zsh"
+
 ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(git web-search)
+
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
+
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+
+autoload -U compinit && compinit
+
+plugins=(git web-search fzf-tab zsh-autosuggestions fast-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-# ---- startup information ----
-uname -a
-
+alias terminfo="uname -a"
 alias reload-zsh="source ~/.zshrc"
 alias edit-zsh="nvim ~/.zshrc"
+alias reload-tmux="tmux source ~/.tmux.conf"
+alias brewlist="brew leaves | xargs brew desc --eval-all"
+alias casklist="brew ls --casks | xargs brew desc --eval-all"
+alias myip='ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2'
 
 # history setup
 HISTFILE=$HOME/.zhistory
@@ -107,8 +116,25 @@ alias cd="z"
 
 alias python="python3"
 
-# ---- get current ip ----
-alias myip='ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2'
+# ---- fzf-tab ----
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+# NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
+# preview directory's content with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+# custom fzf flags
+# NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
+zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
+# switch group using `<` and `>`
+zstyle ':fzf-tab:*' switch-group '<' '>'
+# "popup" feature for tmux
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 # ---- openjdk ----
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
