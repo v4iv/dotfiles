@@ -2,7 +2,13 @@
 
 > A consolidated collection of all my shell and application configuration files for a consistent and portable developer experience.
 
-## Instructions
+## Getting Started
+
+This repository uses symbolic links (`symlinks`) to manage your configurations.
+
+**⚠️ WARNING:** Before running any setup commands, please back up your existing dotfiles!
+
+### Prerequisites
 
 - Install `brew`
   - ```
@@ -15,7 +21,7 @@
   - install formulas
 
     ```
-    brew install bat btop cmatrix eza fd fzf gcc luarocks make neovim nmap \
+    brew install bat btop eza fd fzf gcc luarocks make neovim \
     nvm openjdk bun reattach-to-user-namespace \
     ripgrep sl stow tmux tree tree-sitter-cli wget zoxide
     ```
@@ -87,6 +93,9 @@
       ```
       rm -rf -- "${XDG_CACHE_HOME:-$HOME/.cache}"/p10k-*(N) "${XDG_CACHE_HOME:-$HOME/.cache}"/gitstatus
       ```
+
+### Installation
+
 - Clone `dotfiles` repository in your `$HOME`
   - ```
     git clone https://github.com/v4iv/dotfiles.git
@@ -106,6 +115,9 @@
     ```
     stow .
     ```
+
+### Post Install
+
   - rebuild `bat` cache
     ```
     bat cache --build
