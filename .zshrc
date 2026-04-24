@@ -150,6 +150,9 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 PATH=$PATH:/opt/metasploit-framework/bin
 export PATH=$PATH:/opt/metasploit-framework/bin
 
+# OpenClaw Completion
+source "/Users/vaibhav/.openclaw/completions/openclaw.zsh"
+
 # pnpm
 export PNPM_HOME="/Users/vaibhav/Library/pnpm"
 case ":$PATH:" in
@@ -175,3 +178,4 @@ compinit
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
