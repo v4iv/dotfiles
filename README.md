@@ -35,26 +35,6 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
     brew install --cask font-jetbrains-mono-nerd-font
     ```
 
-- Install `metasploit`
-
-  - ```
-    curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
-     chmod 755 msfinstall && \
-     ./msfinstall
-    ```
-
-  - to update
-
-    ```
-    sudo msfupdate
-    ```
-
-  - To uninstall
-
-    ```
-    sudo msfremove
-    ```
-
 - Clone `tmux-plugin-manager`
 
   - ```
