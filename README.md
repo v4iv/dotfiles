@@ -190,17 +190,25 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
 
 ## Tools You Might Like That I Use
 
+- asn
+
 - btop
 
 - cava
 
 - cmatrix
 
+- dnscrypt
+
 - lazygit
 
 - metasploit
 
+- mole
+
 - mpv
+
+- navi
 
 - neofetch
 
@@ -208,13 +216,19 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
 
 - openclaw
 
+- pet
+
 - vitetris
 
-## Other CLI Tools I Am Considering
+## Other Tools I Am Considering
+
+- atuin
 
 - Sketchybar
 
 - TheFuck
+
+- x-cmd
 
 - Yazi
 
