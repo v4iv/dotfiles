@@ -45,6 +45,17 @@ opt.whichwrap:append("<>[]hl")
 local severity = vim.diagnostic.severity
 
 vim.diagnostic.config({
+	virtual_text = {
+		prefix = function(diagnostic)
+			local icons = {
+				[severity.ERROR] = " ",
+				[severity.WARN] = " ",
+				[severity.INFO] = " ",
+				[severity.HINT] = "󰠠 ",
+			}
+			return icons[diagnostic.severity] or "● "
+		end,
+	},
 	signs = {
 		text = {
 			[severity.ERROR] = " ",
@@ -52,5 +63,12 @@ vim.diagnostic.config({
 			[severity.HINT] = "󰠠 ",
 			[severity.INFO] = " ",
 		},
+	},
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
+	float = {
+		border = "rounded",
+		source = "always",
 	},
 })

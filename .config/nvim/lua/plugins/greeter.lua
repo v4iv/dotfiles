@@ -24,11 +24,26 @@ return {
 			"                                         ",
 		}
 
+		-- Set Header Color
+		vim.api.nvim_set_hl(0, "AlphaHeader", { fg = "#00ffcc", bold = true })
+		dashboard.section.header.opts.hl = "AlphaHeader"
+
 		-- Set menu
 		dashboard.section.buttons.val = {
 			dashboard.button("SPC e", "  > Open File Explorer", "<cmd>NvimTreeToggle<CR>"),
-			dashboard.button("SPC ff", "󰱼  > Find File", "<cmd>Telescope find_files<CR>"),
-			dashboard.button("SPC fw", "  > Find Word", "<cmd>Telescope live_grep<CR>"),
+			dashboard.button("SPC ff", "󰱼  > Find File", function()
+				require("telescope.builtin").find_files({
+					hidden = true,
+					find_command = {
+						"rg",
+						"--files",
+						"--hidden",
+						"--glob",
+						"!**/.git/*",
+					},
+				})
+			end),
+			dashboard.button("SPC fg", "  > Find Word", "<cmd>Telescope live_grep<CR>"),
 			dashboard.button("SPC q", "  > Quit NVIM", "<cmd>qa<CR>"),
 		}
 

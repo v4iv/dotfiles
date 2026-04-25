@@ -21,7 +21,7 @@ return {
 
 			-- or create your custom action
 			local custom_actions = transform_mod({
-				open_trouble_qflist = function(prompt_bufnr)
+				open_trouble_qflist = function(prompt_buffr)
 					trouble.toggle("quickfix")
 				end,
 			})
@@ -42,20 +42,29 @@ return {
 
 			telescope.load_extension("fzf")
 
-			map("n", "<leader>ff", builtin.find_files, { desc = "telescope fuzzy find files" })
-			map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "telescope fuzzy live grep" })
+			-- map("n", "<leader>ff", builtin.find_files, { desc = "telescope fuzzy find files" })
+			map("n", "<leader>ff", function()
+				builtin.find_files({
+					hidden = true,
+					find_command = {
+						"rg",
+						"--files",
+						"--hidden",
+						"--glob",
+						"!**/.git/*",
+					},
+				})
+			end, { desc = "telescope find files (dotfiles, no .git)" })
+			map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "telescope fuzzy live grep" })
+			map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "telescope find buffers" })
+			map("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "telescope fuzzy find recent files" })
+			map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help page" })
 			map(
 				"n",
 				"<leader>fz",
 				"<cmd>Telescope current_buffer_fuzzy_find<CR>",
 				{ desc = "telescope find in current buffer" }
 			)
-			map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "telescope find buffers" })
-			map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
-			map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
-			map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
-			map("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "telescope fuzzy find recent files" })
-			map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help page" })
 			map(
 				"n",
 				"<leader>fa",
@@ -63,7 +72,10 @@ return {
 				{ desc = "telescope find all files" }
 			)
 			map("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
-			map("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Find todos" })
+			map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
+			map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
+			map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
+			map("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Find keymaps" })
 		end,
 	},
 }

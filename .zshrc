@@ -20,13 +20,11 @@ plugins=(git web-search fzf-tab zsh-autosuggestions fast-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-alias terminfo="uname -a"
 alias reload-zsh="source ~/.zshrc"
 alias edit-zsh="nvim ~/.zshrc"
 alias reload-tmux="tmux source ~/.tmux.conf"
 alias brewlist="brew leaves | xargs brew desc --eval-all"
 alias casklist="brew ls --casks | xargs brew desc --eval-all"
-alias myip='ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2'
 
 # history setup
 HISTFILE=$HOME/.zhistory

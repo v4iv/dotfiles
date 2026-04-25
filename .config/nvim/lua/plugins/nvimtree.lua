@@ -14,7 +14,7 @@ return {
 			vim.opt.termguicolors = true
 
 			nvimtree.setup({
-				filters = { dotfiles = false },
+				filters = { dotfiles = false, custom = { ".DS_Store" } },
 				disable_netrw = true,
 				hijack_cursor = true,
 				sync_root_with_cwd = true,

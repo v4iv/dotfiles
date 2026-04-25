@@ -32,7 +32,7 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"rafamadriz/friendly-snippets", -- useful snippets
 			"onsails/lspkind.nvim", -- vs-code like pictograms
-			"hrsh7th/cmp-path", -- source for file system path
+			"https://codeberg.org/FelipeLema/cmp-async-path.git", -- source for file system path
 		},
 	},
 	config = function()
@@ -85,8 +85,8 @@ return {
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" }, -- snippets
 				{ name = "buffer" }, -- text within current buffer
-				{ name = "path" }, -- file system paths
 				{ name = "nvim_lua" },
+				{ name = "async_path" }, -- file system paths
 			}),
 
 			-- configure lspkind for vs-code like pictograms in completion menu
