@@ -42,7 +42,6 @@ return {
 
 			telescope.load_extension("fzf")
 
-			-- map("n", "<leader>ff", builtin.find_files, { desc = "telescope fuzzy find files" })
 			map("n", "<leader>ff", function()
 				builtin.find_files({
 					hidden = true,
@@ -71,11 +70,11 @@ return {
 				"<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
 				{ desc = "telescope find all files" }
 			)
-			map("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+			map("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "telescope find todos" })
 			map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
 			map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
 			map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
-			map("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Find keymaps" })
+			map("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "telescope find keymaps" })
 		end,
 	},
 }

@@ -39,12 +39,26 @@ return {
 								empty_open = "",
 								open = "",
 								symlink = "",
+								arrow_closed = "", -- arrow when folder is closed
+								arrow_open = "", -- arrow when folder is open
 							},
 							git = { unmerged = "" },
 						},
 					},
 				},
+				-- disable window_picker for
+				-- explorer to work well with
+				-- window splits
+				actions = {
+					open_file = {
+						window_picker = {
+							enable = false,
+						},
+					},
+				},
 			})
+
+			-- keymaps
 			local map = vim.keymap.set
 
 			map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
