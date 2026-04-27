@@ -3,3 +3,4 @@
 
 # Set Syntax Highlighting For Astro
 --map-syntax "*.astro:TypeScriptReact"
+--map-syntax "*.conf:conf"
