@@ -25,7 +25,7 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
 	spec = {
 		-- import your plugins
-		{ import = "plugins" },
+		{ import = "waybove.plugins" },
 		-- { import = "plugins.lsp" }
 	},
 	-- Configure any other settings here. See the documentation for more details.

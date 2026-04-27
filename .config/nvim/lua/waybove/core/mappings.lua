@@ -19,10 +19,10 @@ map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
 map("n", "<C-s>", "<cmd>w<CR>", { desc = "general save file" })
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
 
-map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
-map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
+-- map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
+-- map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
 
-map("n", "<leader>x", "<C-w>q", { desc = "close the buffer" })
+map("n", "<leader>q", "<C-w>q", { desc = "close the buffer" })
 -- Comment
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })

@@ -1,4 +1,4 @@
 -- Lazy Package Manager
-require("config.lazy")
+require("waybove.lazy")
 -- Core Options & Mappings
-require("core")
+require("waybove.core")

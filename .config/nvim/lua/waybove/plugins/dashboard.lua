@@ -30,7 +30,7 @@ return {
 
 		-- Set menu
 		dashboard.section.buttons.val = {
-			dashboard.button("SPC e", "  > Open File Explorer", "<cmd>NvimTreeToggle<CR>"),
+			dashboard.button("SPC ee", "  > Open File Explorer", "<cmd>NvimTreeToggle<CR>"),
 			dashboard.button("SPC ff", "󰱼  > Find File", function()
 				require("telescope.builtin").find_files({
 					hidden = true,
