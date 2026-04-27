@@ -16,7 +16,7 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 autoload -U compinit && compinit
 
-plugins=(git web-search fzf-tab zsh-autosuggestions fast-syntax-highlighting)
+plugins=(git web-search fzf-tab zsh-autosuggestions fast-syntax-highlighting ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
