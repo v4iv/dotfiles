@@ -34,7 +34,15 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
     ```
     brew install --cask font-jetbrains-mono-nerd-font
     ```
+  
+  - and krabby
+    ```
+    brew tap yannjor/krabby
+    ```
 
+    ```
+    brew install krabby
+    ```
 - Clone `tmux-plugin-manager`
 
   - ```

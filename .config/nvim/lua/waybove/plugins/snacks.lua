@@ -129,7 +129,7 @@ return {
 				enabled = true,
 				-- automatically configure lazygit to use the current colorscheme
 				-- and integrate edit with the current neovim instance
-				configure = true,
+				configure = false,
 			},
 			picker = { enabled = true },
 			notifier = { enabled = true },
