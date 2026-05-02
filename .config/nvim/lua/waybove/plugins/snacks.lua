@@ -131,13 +131,37 @@ return {
 				-- and integrate edit with the current neovim instance
 				configure = false,
 			},
-			picker = { enabled = true },
+			picker = {
+				enabled = true,
+				files = { hidden = true },
+				grep = { hidden = true },
+				explore = { hidden = true },
+			},
 			notifier = { enabled = true },
 			quickfile = { enabled = true },
 			scope = { enabled = true },
 			scroll = { enabled = true },
 			terminal = { enabled = true },
-			toggle = { enabled = true },
+			toggle = {
+				enabled = true,
+				map = vim.keymap.set, -- keymap.set function to use
+				which_key = true,
+				notify = true, -- show a notification when toggling
+				-- icons for enabled/disabled states
+				icon = {
+					enabled = " ",
+					disabled = " ",
+				},
+				-- colors for enabled/disabled states
+				color = {
+					enabled = "green",
+					disabled = "yellow",
+				},
+				wk_desc = {
+					enabled = "Disable ",
+					disabled = "Enable ",
+				},
+			},
 			words = { enabled = true },
 		},
 		keys = {
@@ -263,13 +287,13 @@ return {
 				end,
 				desc = "Undo History",
 			},
-			{
-				"<leader>uC",
-				function()
-					Snacks.picker.colorschemes()
-				end,
-				desc = "Colorschemes",
-			},
+			-- {
+			-- 	"<leader>uC",
+			-- 	function()
+			-- 		Snacks.picker.colorschemes()
+			-- 	end,
+			-- 	desc = "Colorschemes",
+			-- },
 			-- LSP
 			{
 				"gd",
