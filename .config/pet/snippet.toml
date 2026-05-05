@@ -1,0 +1,66 @@
+
+[[Snippets]]
+  Description = "Python Server (in any directory) at the specified port"
+  Output = ""
+  Tag = []
+  command = "python3 -m http.server <port>"
+
+[[Snippets]]
+  Description = "Print all the paths in $PATH"
+  Output = ""
+  Tag = []
+  command = "echo \"${PATH//:/\\n}\""
+
+[[Snippets]]
+  Description = "Get current local IP address"
+  Output = ""
+  Tag = []
+  command = "ifconfig | grep \"inet \" | grep -v 127.0.0.1 | cut -d\\  -f2"
+
+[[Snippets]]
+  Description = "List all the formulas I have installed with Brew, along with a short description"
+  Output = ""
+  Tag = []
+  command = "brew leaves | xargs brew desc --eval-all"
+
+[[Snippets]]
+  Description = "List all the casks I have installed with Brew, along with a short description"
+  Output = ""
+  Tag = []
+  command = "brew ls --casks | xargs brew desc --eval-all"
+
+[[Snippets]]
+  Description = "Preview Bat Themes"
+  Output = ""
+  Tag = []
+  command = "bat --list-themes | fzf --preview=\"bat --theme={} --color=always <path/to/file>\""
+
+[[Snippets]]
+  Description = "Renders images in the terminal."
+  Output = ""
+  Tag = []
+  command = "catimg -H <height> <path/to/image>"
+
+[[Snippets]]
+  Description = "Dependency tree of all brew formulae installed"
+  Output = ""
+  Tag = []
+  command = "brew leaves | xargs brew deps --tree --installed"
+
+[[Snippets]]
+  Description = "Dependency tree of all brew casks installed"
+  Output = ""
+  Tag = []
+  command = "brew ls --cask | xargs brew deps --tree --installed"
+
+[[Snippets]]
+  Description = "Dependency tree of a brew formula"
+  Output = ""
+  Tag = []
+  command = "brew deps --tree <formula>"
+
+[[Snippets]]
+  Description = "Set DNSCrytp-Proxy DNS for current network"
+  Output = ""
+  Tag = []
+  command = "networksetup -setdnsservers Wi-Fi 127.0.0.1 1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001"
