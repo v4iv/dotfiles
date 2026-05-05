@@ -25,7 +25,7 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
   - install formulas
 
     ```
-    brew install bat eza fd fzf gcc luarocks make neovim \
+    brew install bat chafa eza fd fzf gcc luarocks make neovim \
       reattach-to-user-namespace ripgrep stow tmux tree tree-sitter-cli zoxide
     ```
 
@@ -204,6 +204,8 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
 
 - cava
 
+- chafa
+
 - cmatrix
 
 - dnscrypt
@@ -228,6 +230,8 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
 
 - vitetris
 
+- yazi
+
 ## Other Tools I Am Considering
 
 - atuin
@@ -237,7 +241,5 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
 - TheFuck
 
 - x-cmd
-
-- Yazi
 
 - Yabai
