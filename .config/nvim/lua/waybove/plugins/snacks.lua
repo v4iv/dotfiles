@@ -35,7 +35,12 @@ return {
 								})
 							end,
 						},
-						{ icon = " ", key = "e", desc = "File Explorer", action = "<cmd>NvimTreeToggle<CR>" },
+						{
+							icon = " ",
+							key = "e",
+							desc = "File Explorer",
+							action = "<cmd>NvimTreeToggle<CR>",
+						},
 						{
 							icon = "",
 							key = "g",
@@ -66,19 +71,22 @@ return {
 					},
 					-- Used by the `header` section
 					header = [[
-			 ██████╗  ██████╗ ███╗   ██╗██╗████████╗
+                                                     
+                                                  
+			 ██████╗  ██████╗ ███╗   ██╗██╗████████╗ 
 			 ██╔══██╗██╔═══██╗████╗  ██║╚═╝╚══██╔══╝
-			 ██║  ██║██║   ██║██╔██╗ ██║      ██║   
+			 ██║  ██║██║ 󱢴 ██║██╔██╗ ██║      ██║   
 			 ██║  ██║██║   ██║██║╚██╗██║      ██║   
-			 ██████╔╝╚██████╔╝██║ ╚████║      ██║   
+			 ██████╔╝╚██████╔╝██║ ╚████║      ██║   
 			 ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝      ╚═╝   
-			                                        
-			 ██████╗  █████╗ ███╗   ██╗██╗ ██████╗  
-			 ██╔══██╗██╔══██╗████╗  ██║██║██╔════╝  
+			         󰬽󰬻                             
+			 ██████╗  █████╗ ███╗   ██╗██╗ ██████╗  
+			 ██╔══██╗██╔══██╗████╗  ██║██║██╔════╝  
 			 ██████╔╝███████║██╔██╗ ██║██║██║       
 			 ██╔═══╝ ██╔══██║██║╚██╗██║██║██║       
 			 ██║     ██║  ██║██║ ╚████║██║╚██████╗  
-			 ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝  
+			 ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝  
+                                             󰢚
           ]],
 				},
 				sections = {
@@ -118,6 +126,7 @@ return {
 					{ section = "startup" },
 				},
 			},
+			explorer = { enabled = true },
 			git = { enabled = true },
 			gitbrowse = { enabled = true },
 			indent = {
@@ -133,6 +142,7 @@ return {
 			},
 			picker = {
 				enabled = true,
+				hidden = true,
 				files = { hidden = true },
 				grep = { hidden = true },
 				explore = { hidden = true },
@@ -200,6 +210,13 @@ return {
 					Snacks.picker.notifications()
 				end,
 				desc = "Notification History",
+			},
+			{
+				"<leader>ex",
+				function()
+					Snacks.explorer()
+				end,
+				desc = "File Explorer",
 			},
 			-- git
 			{
