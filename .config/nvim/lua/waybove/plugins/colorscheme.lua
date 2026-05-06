@@ -1,10 +1,14 @@
 return {
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
+		"devbydaniel/houston.nvim",
+		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme("catppuccin-nvim")
+			require("houston").setup({
+				transparent = false,
+				italic_comments = true,
+			})
+			vim.cmd.colorscheme("houston")
 		end,
 	},
 }
