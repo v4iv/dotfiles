@@ -25,7 +25,7 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
   - install formulas
 
     ```
-    brew install bat chafa eza fd fzf gcc luarocks make neovim \
+    brew install bat chafa eza fd figlet fzf gcc lolcat luarocks make neovim \
       reattach-to-user-namespace ripgrep stow tmux tree tree-sitter-cli zoxide
     ```
 

@@ -72,3 +72,5 @@ vim.diagnostic.config({
 		source = "always",
 	},
 })
+-- don't show Process exited 0
+vim.api.nvim_clear_autocmds({ group = "nvim.terminal", event = "TermClose" })

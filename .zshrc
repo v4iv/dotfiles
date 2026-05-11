@@ -134,6 +134,9 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 # "popup" feature for tmux
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
+# Add .local/bin to PATH, created by `pipx` on 2026-05-11 07:23:06
+export PATH="$PATH:/Users/vaibhav/.local/bin"
+
 # ---- openjdk ----
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
