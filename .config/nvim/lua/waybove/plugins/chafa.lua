@@ -1,6 +1,7 @@
 return {
 	{
 		"princejoogie/chafa.nvim",
+		lazy = true,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"m00qek/baleia.nvim",
