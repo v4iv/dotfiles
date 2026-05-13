@@ -64,3 +64,15 @@
   Output = ""
   Tag = []
   command = "networksetup -setdnsservers Wi-Fi 127.0.0.1 1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001"
+
+[[Snippets]]
+  Description = "Disable annoying unsafe disk eject warning (requires reboot)"
+  Output = ""
+  Tag = []
+  command = "sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd.plist DADisableEjectNotification -bool YES && sudo pkill diskarbitrationd"
+
+[[Snippets]]
+  Description = "Change screenshot type to jpg from png to save space."
+  Output = ""
+  Tag = []
+  command = "defaults write com.apple.screencapture type jpg"
