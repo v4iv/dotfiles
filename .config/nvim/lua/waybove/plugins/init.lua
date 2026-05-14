@@ -4,7 +4,6 @@ return {
 	{
 		"nvim-mini/mini.icons",
 		opts = {},
-		enabled = false,
 		lazy = true,
 		version = "*",
 		config = function()
