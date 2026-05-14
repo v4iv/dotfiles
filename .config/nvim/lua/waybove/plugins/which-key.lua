@@ -27,6 +27,10 @@ return {
 			map("n", "<leader>wk", function()
 				vim.cmd("WhichKey " .. vim.fn.input("WhichKey: "))
 			end, { desc = "whichkey query lookup" })
+
+			require("which-key").setup({
+				preset = "helix",
+			})
 		end,
 	},
 }
