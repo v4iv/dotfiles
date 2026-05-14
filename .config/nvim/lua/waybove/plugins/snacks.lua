@@ -8,8 +8,159 @@ return {
 			-- your configuration comes here
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
+			animate = { enabled = true },
 			bigfile = { enabled = true },
 			bufdelete = { enabled = true },
+			explorer = { enabled = true, replace_newtr = true },
+			git = { enabled = true },
+			gitbrowse = { enabled = true },
+			image = { enabled = true },
+			indent = { enabled = true, hl = "SnacksIndent" },
+			input = { enabled = true },
+			lazygit = { enabled = true },
+			notifier = { enabled = true },
+			quickfile = { enabled = true },
+			scope = { enabled = true },
+			scroll = { enabled = true },
+			terminal = { enabled = true },
+			words = { enabled = true },
+
+			-- Picker
+			picker = {
+				enabled = true,
+				icons = {
+					git = {
+						enabled = true,
+						staged = "●",
+						added = "A",
+						deleted = "D",
+						ignored = "",
+						modified = "M",
+						renamed = "R",
+						untracked = "U",
+						unmerged = "",
+					},
+				},
+
+				sources = {
+					files = {
+						hidden = true,
+						ignored = true,
+						win = {
+							input = {
+								keys = {
+									["<S-h>"] = "toggle_hidden",
+									["<S-i>"] = "toggle_ignored",
+									["<S-f>"] = "toggle_follow",
+									["<C-y>"] = { "yazi_copy_relative_path", mode = { "n", "i" } },
+								},
+							},
+						},
+						exclude = {
+							"**/.git/*",
+							"**/node_modules/*",
+							"**/.yarn/cache/*",
+							"**/.yarn/install*",
+							"**/.yarn/releases/*",
+							"**/.pnpm-store/*",
+							"**/.idea/*",
+							"**/.DS_Store",
+							"build/*",
+							"coverage/*",
+							"dist/*",
+							"hodor-types/*",
+							"**/target/*",
+							"**/public/*",
+							"**/digest*.txt",
+							"**/.node-gyp/**",
+						},
+					},
+
+					grep = {
+						hidden = true,
+						ignored = true,
+						win = {
+							input = {
+								keys = {
+									["<S-h>"] = "toggle_hidden",
+									["<S-i>"] = "toggle_ignored",
+									["<S-f>"] = "toggle_follow",
+								},
+							},
+						},
+						exclude = {
+							"**/.git/*",
+							"**/node_modules/*",
+							"**/.yarn/cache/*",
+							"**/.yarn/install*",
+							"**/.yarn/releases/*",
+							"**/.pnpm-store/*",
+							"**/.venv/*",
+							"**/.idea/*",
+							"**/.DS_Store",
+							"**/yarn.lock",
+							"build*/*",
+							"coverage/*",
+							"dist/*",
+							"certificates/*",
+							"hodor-types/*",
+							"**/target/*",
+							"**/public/*",
+							"**/digest*.txt",
+							"**/.node-gyp/**",
+						},
+					},
+					grep_buffers = {},
+
+					explorer = {
+						hidden = true,
+						ignored = true,
+						supports_live = true,
+						auto_close = true,
+						diagnostics = true,
+						diagnostics_open = false,
+						focus = "list",
+						follow_file = true,
+						git_status = true,
+						git_status_open = false,
+						git_untracked = true,
+						jump = { close = true },
+						tree = true,
+						watch = true,
+						exclude = {
+							".git",
+							".pnpm-store",
+							".venv",
+							".DS_Store",
+							"**/.node-gyp/**",
+						},
+					},
+				},
+			},
+
+			-- Toggle
+			toggle = {
+				enabled = true,
+				map = vim.keymap.set, -- keymap.set function to use
+				which_key = true,
+				notify = true, -- show a notification when toggling
+				-- icons for enabled/disabled states
+				icon = {
+					enabled = " ",
+					disabled = " ",
+				},
+				-- colors for enabled/disabled states
+				color = {
+					enabled = "green",
+					disabled = "yellow",
+				},
+				wk_desc = {
+					enabled = "Disable ",
+					disabled = "Enable ",
+				},
+			},
+
+			-- Dashboard
 			dashboard = {
 				enabled = true,
 				preset = {
@@ -39,7 +190,9 @@ return {
 							icon = " ",
 							key = "e",
 							desc = "File Explorer",
-							action = "<cmd>NvimTreeToggle<CR>",
+							action = function()
+								Snacks.explorer()
+							end,
 						},
 						{
 							icon = "",
@@ -87,14 +240,6 @@ return {
 						height = 20,
 					},
 					{ section = "keys", gap = 1, padding = 1 },
-					-- {
-					-- 	pane = 2,
-					-- 	icon = " ",
-					-- 	title = "Recent Files",
-					-- 	section = "recent_files",
-					-- 	indent = 2,
-					-- 	padding = 1,
-					-- },
 					{ pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
 					{
 						pane = 2,
@@ -113,53 +258,6 @@ return {
 					{ section = "startup" },
 				},
 			},
-			explorer = { enabled = true },
-			git = { enabled = true },
-			gitbrowse = { enabled = true },
-			indent = {
-				enabled = true,
-				hl = "SnacksIndent",
-			},
-			input = { enabled = true },
-			lazygit = {
-				enabled = true,
-				-- automatically configure lazygit to use the current colorscheme
-				-- and integrate edit with the current neovim instance
-				configure = false,
-			},
-			picker = {
-				enabled = true,
-				hidden = true,
-				files = { hidden = true },
-				grep = { hidden = true },
-				explore = { hidden = true },
-			},
-			notifier = { enabled = true },
-			quickfile = { enabled = true },
-			scope = { enabled = true },
-			scroll = { enabled = true },
-			terminal = { enabled = true },
-			toggle = {
-				enabled = true,
-				map = vim.keymap.set, -- keymap.set function to use
-				which_key = true,
-				notify = true, -- show a notification when toggling
-				-- icons for enabled/disabled states
-				icon = {
-					enabled = " ",
-					disabled = " ",
-				},
-				-- colors for enabled/disabled states
-				color = {
-					enabled = "green",
-					disabled = "yellow",
-				},
-				wk_desc = {
-					enabled = "Disable ",
-					disabled = "Enable ",
-				},
-			},
-			words = { enabled = true },
 		},
 		keys = {
 			-- Top Pickers & Explorer
@@ -182,7 +280,7 @@ return {
 				function()
 					Snacks.picker.grep()
 				end,
-				desc = "Grep",
+				desc = "Snacks Grep",
 			},
 			{
 				"<leader>:",
@@ -199,11 +297,54 @@ return {
 				desc = "Notification History",
 			},
 			{
-				"<leader>ex",
+				"<leader>e",
 				function()
 					Snacks.explorer()
 				end,
 				desc = "File Explorer",
+			},
+			-- find
+			{
+				"<leader>fb",
+				function()
+					Snacks.picker.buffers()
+				end,
+				desc = "Buffers",
+			},
+			{
+				"<leader>fc",
+				function()
+					Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+				end,
+				desc = "Find Config File",
+			},
+			{
+				"<leader>ff",
+				function()
+					Snacks.picker.files()
+				end,
+				desc = "Find Files",
+			},
+			{
+				"<leader>fg",
+				function()
+					Snacks.picker.git_files()
+				end,
+				desc = "Find Git Files",
+			},
+			{
+				"<leader>fp",
+				function()
+					Snacks.picker.projects()
+				end,
+				desc = "Projects",
+			},
+			{
+				"<leader>fr",
+				function()
+					Snacks.picker.recent()
+				end,
+				desc = "Recent",
 			},
 			-- git
 			{
@@ -255,13 +396,141 @@ return {
 				end,
 				desc = "Git Log File",
 			},
+			-- Grep
+			{
+				"<leader>sb",
+				function()
+					Snacks.picker.lines()
+				end,
+				desc = "Buffer Lines",
+			},
+			{
+				"<leader>sB",
+				function()
+					Snacks.picker.grep_buffers()
+				end,
+				desc = "Grep Open Buffers",
+			},
+			{
+				"<leader>sg",
+				function()
+					Snacks.picker.grep()
+				end,
+				desc = "Grep",
+			},
+			{
+				"<leader>sw",
+				function()
+					Snacks.picker.grep_word()
+				end,
+				desc = "Visual selection or word",
+				mode = { "n", "x" },
+			},
 			-- search
+			{
+				'<leader>s"',
+				function()
+					Snacks.picker.registers()
+				end,
+				desc = "Registers",
+			},
+			{
+				"<leader>s/",
+				function()
+					Snacks.picker.search_history()
+				end,
+				desc = "Search History",
+			},
+			{
+				"<leader>sa",
+				function()
+					Snacks.picker.autocmds()
+				end,
+				desc = "Autocmds",
+			},
+			{
+				"<leader>sb",
+				function()
+					Snacks.picker.lines()
+				end,
+				desc = "Buffer Lines",
+			},
+			{
+				"<leader>sc",
+				function()
+					Snacks.picker.command_history()
+				end,
+				desc = "Command History",
+			},
+			{
+				"<leader>sC",
+				function()
+					Snacks.picker.commands()
+				end,
+				desc = "Commands",
+			},
+			{
+				"<leader>sd",
+				function()
+					Snacks.picker.diagnostics()
+				end,
+				desc = "Diagnostics",
+			},
+			{
+				"<leader>sD",
+				function()
+					Snacks.picker.diagnostics_buffer()
+				end,
+				desc = "Buffer Diagnostics",
+			},
 			{
 				"<leader>sh",
 				function()
 					Snacks.picker.help()
 				end,
 				desc = "Help Pages",
+			},
+			{
+				"<leader>sH",
+				function()
+					Snacks.picker.highlights()
+				end,
+				desc = "Highlights",
+			},
+			{
+				"<leader>si",
+				function()
+					Snacks.picker.icons()
+				end,
+				desc = "Icons",
+			},
+			{
+				"<leader>sj",
+				function()
+					Snacks.picker.jumps()
+				end,
+				desc = "Jumps",
+			},
+			{
+				"<leader>sk",
+				function()
+					Snacks.picker.keymaps()
+				end,
+				desc = "Keymaps",
+			},
+			{
+				"<leader>sl",
+				function()
+					Snacks.picker.loclist()
+				end,
+				desc = "Location List",
+			},
+			{
+				"<leader>sm",
+				function()
+					Snacks.picker.marks()
+				end,
+				desc = "Marks",
 			},
 			{
 				"<leader>sM",
@@ -285,11 +554,25 @@ return {
 				desc = "Quickfix List",
 			},
 			{
+				"<leader>sR",
+				function()
+					Snacks.picker.resume()
+				end,
+				desc = "Resume",
+			},
+			{
 				"<leader>su",
 				function()
 					Snacks.picker.undo()
 				end,
 				desc = "Undo History",
+			},
+			{
+				"<leader>uC",
+				function()
+					Snacks.picker.colorschemes()
+				end,
+				desc = "Colorschemes",
 			},
 			-- LSP
 			{
@@ -356,7 +639,61 @@ return {
 				end,
 				desc = "LSP Workspace Symbols",
 			},
+			-- terminal
+			{
+				"<leader>ft",
+				function()
+					Snacks.terminal()
+				end,
+				desc = "Terminal (cwd)",
+				mode = "n",
+			},
+			{
+				"<leader>fT",
+				function()
+					Snacks.terminal(nil, { cwd = vim.fn.getcwd() })
+				end,
+				desc = "Terminal (Root Dir)",
+				mode = "n",
+			},
+			{
+				"<c-/>",
+				function()
+					Snacks.terminal()
+				end,
+				desc = "Toggle Terminal",
+			},
+			{
+				"<c-:>",
+				function()
+					Snacks.terminal(nil, { cwd = vim.fn.getcwd() })
+				end,
+				desc = "which_key_ignore",
+				mode = "n",
+			},
+			{
+				"<c-_>",
+				function()
+					Snacks.terminal(nil, { cwd = vim.fn.getcwd() })
+				end,
+				desc = "which_key_ignore",
+				mode = "n",
+			},
 			-- Other
+			{
+				"<leader>z",
+				function()
+					Snacks.zen()
+				end,
+				desc = "Toggle Zen Mode",
+			},
+			{
+				"<leader>Z",
+				function()
+					Snacks.zen.zoom()
+				end,
+				desc = "Toggle Zoom",
+			},
 			{
 				"<leader>n",
 				function()
@@ -366,13 +703,6 @@ return {
 			},
 			{
 				"<leader>x",
-				function()
-					Snacks.bufdelete()
-				end,
-				desc = "Delete Buffer",
-			},
-			{
-				"<leader>bd",
 				function()
 					Snacks.bufdelete()
 				end,
@@ -401,18 +731,29 @@ return {
 				desc = "Lazygit",
 			},
 			{
-				"<leader>h",
+				"<leader>bd",
 				function()
-					Snacks.terminal()
-				end,
-				desc = "Toggle Terminal",
-			},
-			{
-				"<c-_>",
-				function()
-					Snacks.terminal()
+					Snacks.bufdelete()
 				end,
 				desc = "which_key_ignore",
+			},
+			{
+				"<leader>N",
+				desc = "Neovim News",
+				function()
+					Snacks.win({
+						file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
+						width = 0.6,
+						height = 0.6,
+						wo = {
+							spell = false,
+							wrap = false,
+							signcolumn = "yes",
+							statuscolumn = " ",
+							conceallevel = 3,
+						},
+					})
+				end,
 			},
 		},
 		init = function()

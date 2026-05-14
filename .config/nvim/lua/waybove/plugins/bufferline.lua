@@ -7,10 +7,8 @@ return {
 			options = {
 				offsets = {
 					{
-						filetype = "NvimTree",
-						text = "File Explorer",
+						filetype = "snacks_layout_box",
 						highlight = "Directory",
-						separator = true, -- use a "true" to enable the default, or set your own character
 					},
 				},
 			},

@@ -1,19 +1,16 @@
 return {
-	"OXY2DEV/markview.nvim",
-	lazy = false,
-	config = function()
-		-- Disable automatic previews.
-		require("markview").setup({
-			preview = { enable = false },
-		})
-
-		vim.api.nvim_set_keymap(
-			"n",
-			"<leader>mv",
-			"<CMD>Markview<CR>",
-			{ desc = "Toggles `markview` previews globally." }
-		)
-	end,
-	-- Completion for `blink.cmp`
-	-- dependencies = { "saghen/blink.cmp" },
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		-- dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.icons" }, -- if you use standalone mini plugins
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {},
+		config = function()
+			require("render-markdown").setup({
+				completions = { lsp = { enabled = true } },
+			})
+		end,
+	},
 }
