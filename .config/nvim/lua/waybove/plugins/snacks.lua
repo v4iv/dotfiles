@@ -173,18 +173,7 @@ return {
 							icon = " ",
 							key = "f",
 							desc = "Find File",
-							action = function()
-								require("telescope.builtin").find_files({
-									hidden = true,
-									find_command = {
-										"rg",
-										"--files",
-										"--hidden",
-										"--glob",
-										"!**/.git/*",
-									},
-								})
-							end,
+							action = ":lua Snacks.dashboard.pick('files')",
 						},
 						{
 							icon = " ",
@@ -795,6 +784,41 @@ return {
 					Snacks.toggle.dim():map("<leader>uD")
 				end,
 			})
+		end,
+		-- patch Snacks.util.icons to enable nvim-web-devicons https://github.com/folke/snacks.nvim/discussions/1638
+		config = function(_, opts)
+			require("snacks").setup(opts)
+			Snacks.util.icon = function(name, cat, opts)
+				opts = opts or {}
+				opts.fallback = opts.fallback or {}
+				local try = {
+					function()
+						return require("mini.icons").get(cat or "file", name)
+					end,
+					function()
+						if cat == "directory" then
+							return opts.fallback.dir or "󰉋 ", "Directory"
+						end
+						local Icons = require("nvim-web-devicons")
+						if cat == "filetype" then
+							return Icons.get_icon_by_filetype(name, { default = false })
+						elseif cat == "file" then
+							local ext = name:match("%.(%w+)$")
+							-- use basename here <----------
+							return Icons.get_icon(vim.fs.basename(name), ext, { default = false }) --[[@as string, string]]
+						elseif cat == "extension" then
+							return Icons.get_icon(nil, name, { default = false }) --[[@as string, string]]
+						end
+					end,
+				}
+				for _, fn in ipairs(try) do
+					local ret = { pcall(fn) }
+					if ret[1] and ret[2] then
+						return ret[2], ret[3]
+					end
+				end
+				return opts.fallback.file or "󰈔 "
+			end
 		end,
 	},
 }

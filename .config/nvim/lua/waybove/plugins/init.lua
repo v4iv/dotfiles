@@ -1,12 +1,13 @@
 return {
 	{ "nvim-lua/plenary.nvim" }, -- lua functions that many plugins use
-	{ "nvim-tree/nvim-web-devicons", opts = {} },
+	{ "nvim-tree/nvim-web-devicons", opts = { default = true } }, -- used for icons
 	{
 		"nvim-mini/mini.icons",
 		opts = {},
+		enabled = false,
 		lazy = true,
 		version = "*",
-		init = function()
+		config = function()
 			require("mini.icons").setup()
 		end,
 		-- specs = {
