@@ -7,7 +7,7 @@ return {
 		-- use a release tag to download pre-built binaries
 		version = "1.*",
 		-- AND/OR build from source
-		-- build = 'cargo build --release',
+		build = "cargo build --release",
 		-- If you use nix, you can build from source with:
 		-- build = 'nix run .#build-plugin',
 
@@ -20,30 +20,75 @@ return {
 			-- 'none' for no mappings
 			--
 			-- All presets have the following mappings:
-			-- C-space: Open menu or open docs if already open
+			-- C-space: Open menu or open docs if already open (requires disabling input source keyboard shortcut in macos settings)
 			-- C-n/C-p or Up/Down: Select next/previous item
 			-- C-e: Hide menu
 			-- C-k: Toggle signature help (if signature.enabled = true)
 			--
 			-- See :h blink-cmp-config-keymap for defining your own keymap
-			keymap = { preset = "default" },
+			keymap = {
+				preset = "default",
+			},
 
 			appearance = {
 				-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 				-- Adjusts spacing to ensure icons are aligned
 				nerd_font_variant = "normal",
+				-- Blink does not expose its default kind icons so you must copy them all (or set your custom ones) and add Copilot
+				kind_icons = {
+					Copilot = "",
+					Text = "󰉿",
+					Method = "󰊕",
+					Function = "󰊕",
+					Constructor = "󰒓",
+
+					Field = "󰜢",
+					Variable = "󰆦",
+					Property = "󰖷",
+
+					Class = "󱡠",
+					Interface = "󱡠",
+					Struct = "󱡠",
+					Module = "󰅩",
+
+					Unit = "󰪚",
+					Value = "󰦨",
+					Enum = "󰦨",
+					EnumMember = "󰦨",
+
+					Keyword = "󰻾",
+					Constant = "󰏿",
+
+					Snippet = "󱄽",
+					Color = "󰏘",
+					File = "󰈔",
+					Reference = "󰬲",
+					Folder = "󰉋",
+					Event = "󱐋",
+					Operator = "󰪚",
+					TypeParameter = "󰬛",
+				},
 			},
 
 			-- (Default) Only show the documentation popup when manually triggered
 			completion = {
 				documentation = { auto_show = false },
+				accept = { auto_brackets = { enabled = true } },
 				ghost_text = { enabled = true, show_with_menu = true },
 			},
 
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "lsp", "path", "snippets", "buffer", "lazydev" },
+				providers = {
+					lazydev = {
+						name = "LazyDev",
+						module = "lazydev.integrations.blink",
+						-- make lazydev completions top priority (see `:h blink.cmp`)
+						score_offset = 100,
+					},
+				},
 			},
 
 			-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
