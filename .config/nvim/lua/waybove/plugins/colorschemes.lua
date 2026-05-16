@@ -8,7 +8,7 @@ return {
 				transparent = false,
 				italic_comments = true,
 			})
-			vim.cmd.colorscheme("houston")
 		end,
 	},
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 }

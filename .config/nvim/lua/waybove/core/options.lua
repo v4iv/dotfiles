@@ -1,8 +1,12 @@
 local opt = vim.opt
 local o = vim.o
-local g = vim.g
+local cmd = vim.cmd
 
 -------------------------------------- options ------------------------------------------
+-- colorscheme
+cmd.colorscheme("houston")
+
+-- editor
 o.laststatus = 3
 o.showmode = false
 o.splitkeep = "screen"
