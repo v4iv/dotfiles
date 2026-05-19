@@ -76,3 +76,9 @@
   Output = ""
   Tag = []
   command = "defaults write com.apple.screencapture type jpg"
+
+[[Snippets]]
+  Description = "Random 32 bit base64 string for use as auth token"
+  Output = ""
+  Tag = []
+  command = "openssl rand -base64 32"
