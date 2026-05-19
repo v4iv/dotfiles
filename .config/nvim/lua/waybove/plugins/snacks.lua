@@ -74,6 +74,7 @@ return {
 							"**/public/*",
 							"**/digest*.txt",
 							"**/.node-gyp/**",
+							"**/.svelte-kit/**",
 						},
 					},
 
@@ -109,6 +110,7 @@ return {
 							"**/public/*",
 							"**/digest*.txt",
 							"**/.node-gyp/**",
+							"**/.svelte-kit/**",
 						},
 					},
 					grep_buffers = {},
@@ -134,6 +136,7 @@ return {
 							".venv",
 							".DS_Store",
 							"**/.node-gyp/**",
+							"**/.svelte-kit/**",
 						},
 					},
 				},
