@@ -1,0 +1,4 @@
+font-family="JetBrainsMono Nerd Font"
+font-size=16
+theme = Apple System Colors
+keybind = global:cmd+backquote=toggle_quick_terminal
