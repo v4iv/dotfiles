@@ -112,6 +112,9 @@ eval "$(zoxide init zsh)"
 
 alias cd="z"
 
+# ---- thefuck ----
+eval $(thefuck --alias)
+
 alias python="python3"
 
 # ---- fzf-tab ----

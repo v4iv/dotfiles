@@ -26,7 +26,7 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
 
     ```
     brew install bat chafa eza fd figlet fzf gcc lolcat luarocks make neovim \
-      reattach-to-user-namespace ripgrep stow tmux tree tree-sitter-cli zoxide
+      reattach-to-user-namespace ripgrep stow thefuck tmux tree tree-sitter-cli zoxide
     ```
 
   - and casks
@@ -228,6 +228,8 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
 
 - pet
 
+- thefuck
+
 - vitetris
 
 - yazi
@@ -237,8 +239,6 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
 - atuin
 
 - Sketchybar
-
-- TheFuck
 
 - x-cmd
 
