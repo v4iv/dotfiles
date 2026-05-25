@@ -219,7 +219,7 @@ return {
 				sections = {
 					{
 						section = "terminal",
-						cmd = 'figlet -f ~/.config/figlet/fonts/ansi_shadow.flf "  DON\'T\n  PANIC" | lolcat -F 0.3 -t -p 100 -f; sleep .1',
+						cmd = 'figlet -f ~/.config/figlet/fonts/ansi_shadow.flf "DON\'T\nPANIC" | lolcat -F 0.3 -t -p 100 -f; sleep .1',
 						height = 15,
 						padding = 1,
 						random = 10,
@@ -229,7 +229,7 @@ return {
 						cmd = "krabby random --no-title; sleep .1",
 						random = 10,
 						pane = 2,
-						indent = 4,
+						-- indent = 4,
 						height = 20,
 					},
 					{ section = "keys", gap = 1, padding = 1 },
