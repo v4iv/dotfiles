@@ -17,6 +17,12 @@ return {
 						end,
 						color = { fg = p.peach },
 					},
+					"encoding",
+					"fileformat",
+					"filetype",
+				},
+				lualine_c = {
+					"filename",
 					{
 						-- show search results count
 						function()
@@ -29,9 +35,6 @@ return {
 						end,
 						color = { fg = p.mint },
 					},
-					"encoding",
-					"fileformat",
-					"filetype",
 				},
 			},
 		})
