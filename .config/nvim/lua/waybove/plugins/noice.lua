@@ -5,6 +5,7 @@ return {
 		event = "VeryLazy",
 		opts = {
 			-- add any options here
+			notifiy = { enabled = false },
 		},
 		dependencies = {
 			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
@@ -16,7 +17,6 @@ return {
 		},
 		config = function()
 			require("noice").setup({
-				notifiy = { enabled = false },
 				views = {
 					cmdline_popup = {
 						position = {

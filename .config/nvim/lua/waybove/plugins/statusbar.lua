@@ -8,9 +8,26 @@ return {
 			sections = {
 				lualine_x = {
 					{
-						require("noice").api.status.mode.get,
-						cond = require("noice").api.status.mode.has,
+						-- show recording mode
+						function()
+							return require("noice").api.status.mode.get()
+						end,
+						cond = function()
+							return package.loaded["noice"] and require("noice").api.status.mode.has()
+						end,
 						color = { fg = p.peach },
+					},
+					{
+						-- show search results count
+						function()
+							-- trim the message to include only the count in between large brackets
+							local count = require("noice").api.status.search.get()
+							return string.match(count, "%[(.*)%]") .. " matches"
+						end,
+						cond = function()
+							return package.loaded["noice"] and require("noice").api.status.search.has()
+						end,
+						color = { fg = p.mint },
 					},
 					"encoding",
 					"fileformat",
