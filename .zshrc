@@ -116,6 +116,7 @@ alias cd="z"
 eval $(thefuck --alias)
 
 alias python="python3"
+alias pip="pipx"
 
 # ---- fzf-tab ----
 # disable sort when completing `git checkout`

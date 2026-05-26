@@ -16,6 +16,7 @@ return {
 		},
 		config = function()
 			require("noice").setup({
+				notifiy = { enabled = false },
 				views = {
 					cmdline_popup = {
 						position = {

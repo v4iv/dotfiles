@@ -1,6 +1,6 @@
+# custom-shader = ~/.config/ghostty/shaders/shader.glsl
+config-file = ?auto/theme.ghostty
 font-family="JetBrainsMono Nerd Font"
 font-size=16
-config-file = ?auto/theme.ghostty
 macos-icon = retro 
 keybind = global:cmd+backquote=toggle_quick_terminal
-# custom-shader = ~/.config/ghostty/shaders/shader.glsl
