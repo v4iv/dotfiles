@@ -1,5 +1,6 @@
 font-family="JetBrainsMono Nerd Font"
 font-size=16
-theme = Apple System Colors
+config-file = ?auto/theme.ghostty
 macos-icon = retro 
 keybind = global:cmd+backquote=toggle_quick_terminal
+# custom-shader = ~/.config/ghostty/shaders/shader.glsl
