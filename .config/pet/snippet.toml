@@ -82,3 +82,9 @@
   Output = ""
   Tag = []
   command = "openssl rand -base64 32"
+
+[[Snippets]]
+  Description = "Print top X commands used in the terminal"
+  Output = ""
+  Tag = []
+  command = "history | awk '{print $2}' | sort | uniq -c | sort -nr | head -<value=10>"
