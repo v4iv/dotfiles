@@ -75,6 +75,7 @@ return {
 							"**/digest*.txt",
 							"**/.node-gyp/**",
 							"**/.svelte-kit/**",
+							"**/.astro/**",
 						},
 					},
 
@@ -111,8 +112,10 @@ return {
 							"**/digest*.txt",
 							"**/.node-gyp/**",
 							"**/.svelte-kit/**",
+							"**/.astro/**",
 						},
 					},
+
 					grep_buffers = {},
 
 					explorer = {
@@ -136,7 +139,6 @@ return {
 							".venv",
 							".DS_Store",
 							"**/.node-gyp/**",
-							"**/.svelte-kit/**",
 						},
 					},
 				},
@@ -224,31 +226,31 @@ return {
 						padding = 1,
 						random = 10,
 					},
+					{ section = "keys", gap = 1, padding = 1 },
+					{ section = "startup" },
 					{
 						section = "terminal",
 						cmd = "krabby random --no-title; sleep .1",
-						random = 10,
+						random = 999,
 						pane = 2,
-						-- indent = 4,
-						height = 20,
+						indent = 4,
+						height = 30,
 					},
-					{ section = "keys", gap = 1, padding = 1 },
-					{ pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
-					{
-						pane = 2,
-						icon = " ",
-						title = "Git Status",
-						section = "terminal",
-						enabled = function()
-							return Snacks.git.get_root() ~= nil
-						end,
-						cmd = "git status --short --branch --renames",
-						height = 5,
-						padding = 1,
-						ttl = 5 * 60,
-						indent = 3,
-					},
-					{ section = "startup" },
+					-- { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+					-- {
+					-- 	pane = 2,
+					-- 	icon = " ",
+					-- 	title = "Git Status",
+					-- 	section = "terminal",
+					-- 	enabled = function()
+					-- 		return Snacks.git.get_root() ~= nil
+					-- 	end,
+					-- 	cmd = "git status --short --branch --renames",
+					-- 	height = 5,
+					-- 	padding = 1,
+					-- 	ttl = 5 * 60,
+					-- 	indent = 3,
+					-- },
 				},
 			},
 		},
