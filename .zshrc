@@ -108,9 +108,7 @@ alias ff='() { file=$(fzf --preview="bat --color=always {}") && [[ -n "$file" ]]
 alias ls="eza --icons=always"
 
 # ---- Zoxide (better cd) ----
-eval "$(zoxide init zsh)"
-
-alias cd="z"
+eval "$(zoxide init --cmd cd zsh)"
 
 # ---- thefuck ----
 eval $(thefuck --alias)
