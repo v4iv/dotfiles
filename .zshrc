@@ -107,6 +107,8 @@ alias ff='() { file=$(fzf --preview="bat --color=always {}") && [[ -n "$file" ]]
 # ---- Eza (better ls) ----
 alias ls="eza --icons=always"
 
+export EZA_CONFIG_DIR="$HOME/.config/eza"
+
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init --cmd cd zsh)"
 
@@ -114,6 +116,7 @@ eval "$(zoxide init --cmd cd zsh)"
 eval $(thefuck --alias)
 
 alias python="python3"
+
 alias pip="pipx"
 
 # ---- fzf-tab ----
