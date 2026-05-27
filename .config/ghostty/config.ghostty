@@ -3,4 +3,7 @@ config-file = ?auto/theme.ghostty
 font-family="JetBrainsMono Nerd Font"
 font-size=16
 macos-icon = retro 
+fullscreen = true
+window-padding-x = 0
+window-padding-y = 0
 keybind = global:cmd+backquote=toggle_quick_terminal
