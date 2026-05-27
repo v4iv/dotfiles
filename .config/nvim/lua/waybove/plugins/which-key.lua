@@ -19,6 +19,9 @@ return {
 			"v",
 			"g",
 		},
+		dependencies = {
+			{ "nvim-mini/mini.icons", version = false, lazy = true },
+		},
 		config = function()
 			local map = vim.keymap.set
 
