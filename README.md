@@ -26,7 +26,7 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
 
     ```
     brew install bat chafa eza fd figlet fzf gcc lolcat luarocks make neovim \
-      reattach-to-user-namespace ripgrep stow thefuck tmux tree tree-sitter-cli zoxide
+      reattach-to-user-namespace ripgrep rmlint stow thefuck tmux tree tree-sitter-cli zoxide
     ```
 
   - and casks
@@ -228,6 +228,10 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
 
 - pet
 
+- rmlint
+
+- rsync
+
 - thefuck
 
 - vitetris
@@ -237,6 +241,10 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
 ## Other Tools I Am Considering
 
 - atuin
+
+- entr
+
+- rclone
 
 - Sketchybar
 
