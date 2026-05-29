@@ -1,6 +1,7 @@
-# custom-shader = ~/.config/ghostty/shaders/shader.glsl
+custom-shader = ~/.config/ghostty/shaders/cursor-trail.glsl
 config-file = ?auto/theme.ghostty
-font-family="JetBrainsMono Nerd Font"
+# Meslo is a modified Apple Menlo Font; LG stands for Line Gap (S, M, L); DZ stands for Dotted Zero (0); Nerd Font version contains glyphs for TUI
+font-family="MesloLGSDZ Nerd Font"
 font-size=16
 macos-icon = retro 
 fullscreen = true

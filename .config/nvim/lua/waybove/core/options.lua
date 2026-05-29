@@ -32,9 +32,11 @@ o.number = true
 o.numberwidth = 2
 o.ruler = false
 
+-- Configure how new splits should be opened
+vim.o.splitright = true
+vim.o.splitbelow = true
+
 o.signcolumn = "yes"
-o.splitbelow = true
-o.splitright = true
 o.timeoutlen = 400
 o.undofile = true
 
@@ -44,6 +46,11 @@ o.updatetime = 250
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append("<>[]hl")
+
+-- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
+-- instead raise a dialog asking if you wish to save the current file(s)
+-- See `:help 'confirm'`
+vim.o.confirm = true
 
 -- LSP
 local severity = vim.diagnostic.severity
@@ -76,5 +83,6 @@ vim.diagnostic.config({
 		source = "always",
 	},
 })
+
 -- don't show Process exited 0
 vim.api.nvim_clear_autocmds({ group = "nvim.terminal", event = "TermClose" })

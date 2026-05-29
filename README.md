@@ -25,7 +25,7 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
   - install formulas
 
     ```
-    brew install bat chafa eza fd figlet fzf gcc lolcat luarocks make neovim \
+    brew install bat chafa eza fd figlet fzf gcc lolcat luarocks make neovim pipx \
       reattach-to-user-namespace ripgrep rmlint stow thefuck tmux tree tree-sitter-cli zoxide
     ```
 
@@ -36,6 +36,7 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
     ```
   
   - and krabby
+
     ```
     brew tap yannjor/krabby
     ```
@@ -43,6 +44,7 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
     ```
     brew install krabby
     ```
+
 - Clone `tmux-plugin-manager`
 
   - ```
@@ -119,6 +121,7 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
       ```
       rm -rf -- "${XDG_CACHE_HOME:-$HOME/.cache}"/p10k-*(N) "${XDG_CACHE_HOME:-$HOME/.cache}"/gitstatus
       ```
+
 - Clone other `oh-my-zsh` plugins
 
     - `compinit` omz method
@@ -227,6 +230,8 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
 - openclaw
 
 - pet
+
+- pipx
 
 - rmlint
 
