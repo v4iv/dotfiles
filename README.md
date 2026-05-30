@@ -25,7 +25,7 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
   - install formulas
 
     ```
-    brew install bat chafa eza fd figlet fzf gcc lolcat luarocks make neovim pipx \
+    brew install bat chafa diff-so-fancy eza fd figlet fzf gcc lolcat luarocks make neovim pipx \
       reattach-to-user-namespace ripgrep rmlint stow thefuck tmux tree tree-sitter-cli zoxide
     ```
 
@@ -211,6 +211,8 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
 
 - cmatrix
 
+- diff-so-fancy
+
 - dnscrypt
 
 - lazygit
@@ -246,6 +248,8 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
 ## Other Tools I Am Considering
 
 - atuin
+
+- chezmoi
 
 - entr
 

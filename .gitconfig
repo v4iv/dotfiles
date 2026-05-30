@@ -1,0 +1,12 @@
+[user]
+	name = Vaibhav Sharma
+	email = vaibhavsharmaatwork@gmail.com
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RF
