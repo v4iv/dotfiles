@@ -18,6 +18,7 @@ return {
 			"c",
 			"v",
 			"g",
+			"\\",
 		},
 		dependencies = {
 			{ "nvim-mini/mini.icons", version = false, lazy = true },
