@@ -11,7 +11,7 @@ return {
 			animate = { enabled = true },
 			bigfile = { enabled = true },
 			bufdelete = { enabled = true },
-			explorer = { enabled = true, replace_newtr = false },
+			explorer = { enabled = true, replace_newtr = true },
 			git = { enabled = true },
 			gitbrowse = { enabled = true },
 			image = { enabled = true },
