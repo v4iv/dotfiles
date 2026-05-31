@@ -88,3 +88,9 @@
   Output = ""
   Tag = []
   command = "history | awk '{print $2}' | sort | uniq -c | sort -nr | head -<value=10>"
+
+[[Snippets]]
+  Description = "Nuke NeoVim Installs"
+  Output = ""
+  Tag = []
+  command = "rm -rf ~/.local/share/nvim ~/.cache/nvim ~/.local/state/nvim"

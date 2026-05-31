@@ -2,31 +2,31 @@ local map = vim.keymap.set
 
 map("i", "jk", "<Esc>")
 map("t", "jk", "<C-><C-n>")
-map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
-map("i", "<C-e>", "<End>", { desc = "move end of line" })
-map("i", "<C-h>", "<Left>", { desc = "move left" })
-map("i", "<C-l>", "<Right>", { desc = "move right" })
-map("i", "<C-j>", "<Down>", { desc = "move down" })
-map("i", "<C-k>", "<Up>", { desc = "move up" })
+map("i", "<C-b>", "<ESC>^i", { desc = "Move Beginning of Line" })
+map("i", "<C-e>", "<End>", { desc = "Move End of Line" })
+map("i", "<C-h>", "<Left>", { desc = "Move Left" })
+map("i", "<C-l>", "<Right>", { desc = "Move Right" })
+map("i", "<C-j>", "<Down>", { desc = "Move Down" })
+map("i", "<C-k>", "<Up>", { desc = "Move Up" })
 
-map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
-map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
-map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
-map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
+map("n", "<C-h>", "<C-w>h", { desc = "Switch Window Left" })
+map("n", "<C-l>", "<C-w>l", { desc = "Switch Window Right" })
+map("n", "<C-j>", "<C-w>j", { desc = "Switch Window Down" })
+map("n", "<C-k>", "<C-w>k", { desc = "Switch Window Up" })
 
-map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
+map("n", "<Esc>", "<cmd>noh<CR>", { desc = "General Clear Highlights" })
 
-map("n", "<C-s>", "<cmd>w<CR>", { desc = "general save file" })
-map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
+map("n", "<C-s>", "<cmd>w<CR>", { desc = "General Save File" })
+map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "General Copy Whole File" })
 
-map("n", "<leader>q", "<C-w>q", { desc = "close the buffer" })
+map("n", "<leader>q", "<C-w>q", { desc = "Close The Buffer" })
 -- Comment
-map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
-map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
+map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
+map("v", "<leader>/", "gc", { desc = "Toggle Comment", remap = true })
 
 -- global lsp mappings
-map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "LSP diagnostic loclist" })
-map("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open [d]iagnostic [q]uickfix list" })
+map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "LSP Diagnostic LocList" })
+map("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open [d]iagnostic [q]uickfix List" })
 
 -- terminal
-map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
+map("t", "<C-x>", "<C-\\><C-N>", { desc = "Terminal Escape Terminal Mode" })

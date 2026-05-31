@@ -33,11 +33,11 @@ return {
 
 			local map = vim.keymap.set
 
-			map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "whichkey all keymaps" })
+			map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "WhichKey All Keymaps" })
 
 			map("n", "<leader>wk", function()
 				vim.cmd("WhichKey " .. vim.fn.input("WhichKey: "))
-			end, { desc = "whichkey query lookup" })
+			end, { desc = "WhichKey Query Lookup" })
 		end,
 		---@param ctx { mode: string, operator: string }
 		defer = function(ctx)

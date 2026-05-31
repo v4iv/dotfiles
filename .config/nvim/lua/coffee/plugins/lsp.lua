@@ -1,7 +1,7 @@
 return {
 	{
 		"mason-org/mason-lspconfig.nvim",
-		event = { "BufReadPre", "BufNewFile" },
+		-- event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			-- list of servers for mason to install
 			ensure_installed = {
@@ -16,6 +16,7 @@ return {
 				"lua_ls",
 				"oxlint",
 				"prismals",
+				"pylsp",
 				"pyright",
 				"rust_analyzer",
 				"svelte",
