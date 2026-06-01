@@ -7,6 +7,19 @@ return {
 			options = { theme = "houston" },
 			sections = {
 				lualine_x = {
+					-- {
+					-- 	require("noice").api.status.message.get_hl,
+					-- 	cond = require("noice").api.status.message.has,
+					-- },
+					-- {
+					-- 	function()
+					-- 		return require("noice").api.status.command.get()
+					-- 	end,
+					-- 	cond = function()
+					-- 		return package.loaded["noice"] and require("noice").api.status.command.has()
+					-- 	end,
+					-- 	color = { fg = p.cyan },
+					-- },
 					{
 						-- show recording mode
 						function()
