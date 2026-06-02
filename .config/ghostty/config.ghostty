@@ -1,11 +1,17 @@
+# custom shader
 custom-shader = ~/.config/ghostty/shaders/cursor-trail.glsl
 config-file = ?auto/theme.ghostty
-font-family="0xProto Nerd Font"
-font-size=16
-font-feature = +ss01 
-macos-icon = retro 
-fullscreen = true
+# custom app icon
+macos-custom-icon = ~/.config/ghostty/icons/catppuccin-mocha.icns
+macos-icon = custom
+# window padding
+window-padding-balance = true
 window-padding-x = 1
 window-padding-y = 1
-window-padding-balance = true
+fullscreen = true
+# font configurations
+font-family="0xProto Nerd Font"
+font-size=16
+font-feature = +ss01
+# custom keybindings
 keybind = global:cmd+backquote=toggle_quick_terminal
