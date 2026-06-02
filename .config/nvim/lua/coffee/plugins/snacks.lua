@@ -33,8 +33,8 @@ return {
 					git = {
 						enabled = true,
 						staged = "●",
-						added = "A",
-						deleted = "D",
+						added = "",
+						deleted = "󰚃",
 						ignored = "",
 						modified = "M",
 						renamed = "R",
