@@ -1,5 +1,4 @@
 return {
-	{ "m00qek/baleia.nvim" },
 	{ "nvim-lua/plenary.nvim" }, -- lua functions that many plugins use
 	{ "nvim-tree/nvim-web-devicons", opts = { default = true } }, -- used for icons
 	-- {
