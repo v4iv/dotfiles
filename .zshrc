@@ -5,6 +5,21 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/vaibhav/.docker/completions $fpath)
+# End of Docker CLI completions
+
+# zsh-completions
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+
+# bun completions
+[ -s "/Users/vaibhav/.bun/_bun" ] && source "/Users/vaibhav/.bun/_bun"
+
+# OpenClaw Completion
+source "$HOME/.openclaw/completions/openclaw.zsh"
+
+autoload -Uz compinit && compinit
+
 # ---- oh my zsh ----
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -12,14 +27,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-
-autoload -U compinit && compinit
-
 plugins=(git web-search fzf-tab zsh-autosuggestions fast-syntax-highlighting ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
+# aliases
 alias reload-zsh="source ~/.zshrc"
 alias edit-zsh="nvim ~/.zshrc"
 alias reload-tmux="tmux source ~/.tmux.conf"
@@ -115,6 +127,18 @@ eval "$(zoxide init --cmd cd zsh)"
 # ---- thefuck ----
 eval $(thefuck --alias)
 
+# --- Yazi Setup ---
+export EDITOR="nvim"
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 alias python="python3"
 
 alias pip="pipx"
@@ -170,17 +194,6 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# bun completions
-[ -s "/Users/vaibhav/.bun/_bun" ] && source "/Users/vaibhav/.bun/_bun"
-
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/vaibhav/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
-
-# OpenClaw Completion
-source "$HOME/.openclaw/completions/openclaw.zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
