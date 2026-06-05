@@ -29,3 +29,6 @@ map("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open [d]iagnostic [q
 
 -- terminal
 map("t", "<C-x>", "<C-\\><C-N>", { desc = "Terminal Escape Terminal Mode" })
+
+-- lazy
+map("n", "<leader>lz", "<cmd>Lazy<cr>", { desc = "Lazy Plugin Manager" })
