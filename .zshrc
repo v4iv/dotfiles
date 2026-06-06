@@ -40,8 +40,8 @@ alias casklist="brew ls --casks | xargs brew desc --eval-all"
 
 # history setup
 HISTFILE=$HOME/.zhistory
-SAVEHIST=1000
-HISTSIZE=999
+SAVEHIST=10000
+HISTSIZE=9999
 setopt share_history 
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
@@ -116,6 +116,26 @@ _fzf_comprun() {
 # use bat to preview files in fzf
 alias ff='() { file=$(fzf --preview="bat --color=always {}") && [[ -n "$file" ]] && nvim "$file"; }'
 
+# ---- fzf-tab ----
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+# NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
+# preview directory's content with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+# custom fzf flags
+# NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
+zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
+# switch group using `<` and `>`
+zstyle ':fzf-tab:*' switch-group '<' '>'
+# "popup" feature for tmux
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+
 # ---- Eza (better ls) ----
 alias ls="eza --icons=always"
 
@@ -142,26 +162,6 @@ function y() {
 alias python="python3"
 
 alias pip="pipx"
-
-# ---- fzf-tab ----
-# disable sort when completing `git checkout`
-zstyle ':completion:*:git-checkout:*' sort false
-# set descriptions format to enable group support
-# NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
-zstyle ':completion:*:descriptions' format '[%d]'
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
-zstyle ':completion:*' menu no
-# preview directory's content with eza when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
-# custom fzf flags
-# NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
-zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
-# switch group using `<` and `>`
-zstyle ':fzf-tab:*' switch-group '<' '>'
-# "popup" feature for tmux
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 # Add .local/bin to PATH, created by `pipx` on 2026-05-11 07:23:06
 export PATH="$PATH:/Users/vaibhav/.local/bin"

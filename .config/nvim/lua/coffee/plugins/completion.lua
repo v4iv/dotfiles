@@ -63,7 +63,7 @@ return {
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "i18n", "lsp", "path", "snippets", "buffer" },
 				per_filetype = {
 					lua = { inherit_defaults = true, "lazydev" },
 				},
@@ -73,6 +73,13 @@ return {
 						module = "lazydev.integrations.blink",
 						-- make lazydev completions top priority (see `:h blink.cmp`)
 						score_offset = 100,
+					},
+					i18n = {
+						name = "i18n",
+						module = "i18n.integration.blink_source",
+						opts = {
+							-- future options can be placed here
+						},
 					},
 				},
 			},

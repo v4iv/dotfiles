@@ -18,4 +18,5 @@ return {
 	-- 		end
 	-- 	end,
 	-- },
+	-- TODO: consider 'code-biscuits/nvim-biscuits'
 }

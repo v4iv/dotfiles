@@ -2,8 +2,8 @@
 custom-shader = ~/.config/ghostty/shaders/cursor-trail.glsl
 config-file = ?auto/theme.ghostty
 # custom app icon
-macos-custom-icon = ~/.config/ghostty/icons/catppuccin-mocha.icns
 macos-icon = custom
+macos-custom-icon = ~/.config/ghostty/icons/catppuccin-mocha.icns
 # window padding
 window-padding-balance = true
 window-padding-x = 1
