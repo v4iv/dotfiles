@@ -94,3 +94,9 @@
   Output = ""
   Tag = []
   command = "rm -rf ~/.local/share/nvim ~/.cache/nvim ~/.local/state/nvim"
+
+[[Snippets]]
+  Description = "Brew Formula Dependencies List"
+  Output = ""
+  Tag = []
+  command = "brew deps --include-build --tree $(brew leaves)"

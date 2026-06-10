@@ -221,10 +221,11 @@ return {
 				sections = {
 					{
 						section = "terminal",
-						cmd = 'figlet -f ~/.config/figlet/fonts/ansi_shadow.flf "  DON\'T\n  PANIC" | lolcat -F 0.3 -t -p 100 -f; sleep .1',
+						-- cmd = 'figlet -f ~/.config/figlet/fonts/ansi_shadow.flf "  DON\'T\n  PANIC" | lolcat -F 0.3 -t -p 100 -f; sleep .1',
+						cmd = "~/.config/nvim/scripts/welcome.sh",
 						height = 15,
 						padding = 1,
-						random = 10,
+						random = 100,
 					},
 					{ section = "keys", gap = 1, padding = 1 },
 					{ section = "startup" },

@@ -161,8 +161,6 @@ function y() {
 
 alias python="python3"
 
-alias pip="pipx"
-
 # Add .local/bin to PATH, created by `pipx` on 2026-05-11 07:23:06
 export PATH="$PATH:/Users/vaibhav/.local/bin"
 

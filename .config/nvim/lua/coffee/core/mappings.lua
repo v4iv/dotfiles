@@ -1,6 +1,7 @@
 local map = vim.keymap.set
 
 map("i", "jk", "<Esc>")
+map("i", "jj", "<Esc>")
 map("t", "jk", "<C-><C-n>")
 map("i", "<C-b>", "<ESC>^i", { desc = "Move Beginning of Line" })
 map("i", "<C-e>", "<End>", { desc = "Move End of Line" })
@@ -8,6 +9,10 @@ map("i", "<C-h>", "<Left>", { desc = "Move Left" })
 map("i", "<C-l>", "<Right>", { desc = "Move Right" })
 map("i", "<C-j>", "<Down>", { desc = "Move Down" })
 map("i", "<C-k>", "<Up>", { desc = "Move Up" })
+map("n", "J", ":m .+1<CR>==", { desc = "Move Line Down" })
+map("n", "K", ":m .-2<CR>==", { desc = "Move Line Up" })
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Line Down" })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Line Up" })
 
 map("n", "<C-h>", "<C-w>h", { desc = "Switch Window Left" })
 map("n", "<C-l>", "<C-w>l", { desc = "Switch Window Right" })
