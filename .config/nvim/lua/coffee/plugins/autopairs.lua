@@ -3,7 +3,9 @@ return {
 		"saghen/blink.pairs",
 		event = { "BufReadPre", "BufNewFile" },
 		version = "*", -- (recommended) only required with prebuilt binaries
-
+		build = function()
+			require("blink.pairs").build():pwait(60000)
+		end,
 		-- download prebuilt binaries from github releases
 		dependencies = "saghen/blink.download",
 		-- OR build from source, requires nightly:
@@ -39,10 +41,10 @@ return {
 			},
 			highlights = {
 				enabled = true,
-				-- requires require('vim._extui').enable({}), otherwise has no effect
+				-- requires require('vim._core.ui2').enable({}), otherwise has no effect
 				cmdline = true,
 				-- set to { 'BlinkPairs' } to disable rainbow highlighting
-				groups = { "BlinkPairs" },
+				groups = { "BlinkPairsOrange", "BlinkPairsPurple", "BlinkPairsBlue" },
 				unmatched_group = "BlinkPairsUnmatched",
 
 				-- highlights matching pairs under the cursor

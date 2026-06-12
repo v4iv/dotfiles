@@ -7,7 +7,7 @@ return {
 		italic_comments = true,
 		styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
 			keyword = { italic = true },
-			conditionals = { "italic" },
+			conditionals = { italic = true },
 			types = { italic = true },
 			functions = {},
 			variables = {},
