@@ -222,7 +222,7 @@ return {
 					{
 						section = "terminal",
 						-- cmd = 'figlet -f ~/.config/figlet/fonts/ansi_shadow.flf "  DON\'T\n  PANIC" | lolcat -F 0.3 -t -p 100 -f; sleep .1',
-						cmd = "~/.config/nvim/scripts/welcome.sh",
+						cmd = "~/.config/nvim/assets/scripts/welcome.sh",
 						height = 15,
 						padding = 1,
 						random = 100,
