@@ -113,7 +113,7 @@ _fzf_comprun() {
   esac
 }
 
-# use bat to preview files in fzf
+# use bat to preview files in fzf and nvim to open
 alias ff='() { file=$(fzf --preview="bat --color=always {}") && [[ -n "$file" ]] && nvim "$file"; }'
 
 # ---- fzf-tab ----

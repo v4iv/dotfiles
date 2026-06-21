@@ -4,9 +4,9 @@ return {
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			-- optional pickers:
+			-- "folke/snacks.nvim",
 			-- 'ibhagwan/fzf-lua',
 			-- 'nvim-telescope/telescope.nvim',
-			-- 'folke/snacks.nvim',
 		},
 		config = function()
 			require("i18n").setup({
