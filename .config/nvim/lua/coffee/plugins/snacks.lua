@@ -11,7 +11,7 @@ return {
 			animate = { enabled = true },
 			bigfile = { enabled = true },
 			bufdelete = { enabled = true },
-			explorer = { enabled = true, replace_newtr = true },
+			explorer = { enabled = true, replace_newtr = true, trash = true },
 			git = { enabled = true },
 			gitbrowse = { enabled = true },
 			image = { enabled = true },
@@ -170,10 +170,6 @@ return {
 			dashboard = {
 				enabled = true,
 				preset = {
-					-- Used by the `keys` section to show keymaps.
-					-- Set your custom keymaps here.
-					-- When using a function, the `items` argument are the default keymaps.
-					---@type snacks.dashboard.Item[]
 					header = [[
                                                                              
                 ████ ██████           █████      ██                    
@@ -184,6 +180,10 @@ return {
            ███████████ ███    ███ █████████ █████ █████ ████ █████ 
           ██████  █████████████████████ ████ █████ █████ ████ ██████
           ]],
+					-- Used by the `keys` section to show keymaps.
+					-- Set your custom keymaps here.
+					-- When using a function, the `items` argument are the default keymaps.
+					---@type snacks.dashboard.Item[]
 					keys = {
 						{
 							icon = " ",
