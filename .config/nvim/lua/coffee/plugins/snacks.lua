@@ -170,16 +170,6 @@ return {
 			dashboard = {
 				enabled = true,
 				preset = {
-					header = [[
-                                                                             
-                ████ ██████           █████      ██                    
-               ███████████             █████                            
-               █████████ ███████████████████ ███   ███████████  
-              █████████  ███    █████████████ █████ ██████████████  
-             █████████ ██████████ █████████ █████ █████ ████ █████  
-           ███████████ ███    ███ █████████ █████ █████ ████ █████ 
-          ██████  █████████████████████ ████ █████ █████ ████ ██████
-          ]],
 					-- Used by the `keys` section to show keymaps.
 					-- Set your custom keymaps here.
 					-- When using a function, the `items` argument are the default keymaps.
@@ -227,26 +217,36 @@ return {
 						},
 						{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 					},
+					header = [[
+                                                                   
+      ████ ██████           █████      ██                    
+     ███████████             █████                            
+     █████████ ███████████████████ ███   ███████████  
+    █████████  ███    █████████████ █████ ██████████████  
+   █████████ ██████████ █████████ █████ █████ ████ █████  
+ ███████████ ███    ███ █████████ █████ █████ ████ █████ 
+██████  █████████████████████ ████ █████ █████ ████ ██████
+          ]],
 				},
 				sections = {
+					{ section = "header", padding = 1 },
 					{
-						section = "terminal",
-						-- cmd = 'figlet -f ogre "But First,\nCoffee"  | lolcat -F 0.3 -t -p 100 -f; sleep .1',
-						cmd = "~/.config/nvim/assets/scripts/welcome.sh",
-						height = 15,
-						padding = 1,
-						random = 100,
+						align = "center",
+						padding = 2,
+						text = {
+							{ "DON'T PANIC", hl = "@diff.minus" },
+						},
 					},
 					{ section = "keys", gap = 1, padding = 1 },
-					{ section = "startup" },
-					{
-						section = "terminal",
-						cmd = "krabby random --no-title; sleep .1",
-						random = 999,
-						pane = 2,
-						indent = 4,
-						height = 30,
-					},
+					{ section = "startup", padding = 2 },
+					-- {
+					-- 	section = "terminal",
+					-- 	cmd = 'figlet -f ogre -w 80 "But First, Coffee"  | lolcat -F 0.3 -t -p 100 -f; sleep .1',
+					-- 	align = "center",
+					-- 	height = 8,
+					-- 	width = 120,
+					-- 	random = 100,
+					-- },
 					-- { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
 					-- {
 					-- 	pane = 2,
@@ -782,6 +782,30 @@ return {
 					else
 						vim.print = _G.dd
 					end
+
+					-- loop colors on the header
+					local colors = {
+						"#54b9ff",
+						"#00daef",
+						"#4bf3c8",
+						"#ffd493",
+						"#cc75f4",
+						"#acafff",
+						"#f44747",
+						"#f4587e",
+					}
+
+					local i = 1
+					vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { fg = colors[i] })
+					local timer = vim.uv.new_timer()
+					timer:start(
+						500, -- initial delay
+						1000, -- interval in ms
+						vim.schedule_wrap(function()
+							i = (i % #colors) + 1
+							vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { fg = colors[i] })
+						end)
+					)
 
 					-- Create some toggle mappings
 					Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
