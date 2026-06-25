@@ -792,7 +792,7 @@ return {
 						"#cc75f4",
 						"#acafff",
 						"#f44747",
-						"#f4587e",
+						"#ef9f76",
 					}
 
 					local i = 1
