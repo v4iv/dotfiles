@@ -15,7 +15,21 @@ return {
 			git = { enabled = true },
 			gitbrowse = { enabled = true },
 			image = { enabled = true },
-			indent = { enabled = true, hl = "SnacksIndent" },
+			indent = {
+				enabled = true,
+				-- hl = "SnacksIndent",
+				-- can be a list of hl groups to cycle through
+				hl = {
+					"SnacksIndent1",
+					"SnacksIndent2",
+					"SnacksIndent3",
+					"SnacksIndent4",
+					"SnacksIndent5",
+					"SnacksIndent6",
+					"SnacksIndent7",
+					"SnacksIndent8",
+				},
+			},
 			input = { enabled = true },
 			lazygit = { enabled = true },
 			notifier = { enabled = true },
@@ -823,6 +837,10 @@ return {
 					Snacks.toggle.inlay_hints():map("<leader>uh")
 					Snacks.toggle.indent():map("<leader>ug")
 					Snacks.toggle.dim():map("<leader>uD")
+					-- -- Toggle the profiler
+					-- Snacks.toggle.profiler():map("<leader>pp")
+					-- -- Toggle the profiler highlights
+					-- Snacks.toggle.profiler_highlights():map("<leader>ph")
 				end,
 			})
 		end,
