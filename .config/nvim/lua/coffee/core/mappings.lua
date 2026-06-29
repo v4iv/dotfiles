@@ -13,6 +13,8 @@ map("n", "J", ":m .+1<CR>==", { desc = "Move Line Down" })
 map("n", "K", ":m .-2<CR>==", { desc = "Move Line Up" })
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Line Down" })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Line Up" })
+map("x", "J", ":m '>+1<CR>gv=gv", { desc = "Move Line Down" })
+map("x", "K", ":m '<-2<CR>gv=gv", { desc = "Move Line Up" })
 
 map("n", "<C-h>", "<C-w>h", { desc = "Switch Window Left" })
 map("n", "<C-l>", "<C-w>l", { desc = "Switch Window Right" })
