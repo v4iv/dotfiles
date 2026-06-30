@@ -4,6 +4,7 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		-- optional: provides snippets for the snippet source
 		dependencies = {
+			"saghen/blink.lib",
 			"rafamadriz/friendly-snippets",
 			{
 				"folke/lazydev.nvim", -- for lua files only
@@ -16,13 +17,13 @@ return {
 					},
 				},
 			},
-			"moyiz/blink-emoji.nvim",
+			"onsails/lspkind.nvim",
 		},
-
-		-- use a release tag to download pre-built binaries
-		version = "1.*",
-		-- AND/OR build from source
-		build = "cargo build --release",
+		build = function()
+			-- build the fuzzy matcher, optionally add a timeout to `pwait(timeout_ms)`
+			-- you can use `gb` in `:Lazy` to rebuild the plugin as needed
+			require("blink.cmp").build():pwait()
+		end,
 		-- If you use nix, you can build from source with:
 		-- build = 'nix run .#build-plugin',
 
@@ -59,12 +60,47 @@ return {
 				list = {
 					selection = { preselect = false, auto_insert = true },
 				},
+				menu = {
+					draw = {
+						components = {
+							kind_icon = {
+								text = function(ctx)
+									local icon = ctx.kind_icon
+									if vim.tbl_contains({ "Path" }, ctx.source_name) then
+										local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
+										if dev_icon then
+											icon = dev_icon
+										end
+									else
+										icon = require("lspkind").symbol_map[ctx.kind] or ""
+									end
+
+									return icon .. ctx.icon_gap
+								end,
+
+								-- Optionally, use the highlight groups from nvim-web-devicons
+								-- You can also add the same function for `kind.highlight` if you want to
+								-- keep the highlight groups in sync with the icons.
+								highlight = function(ctx)
+									local hl = ctx.kind_hl
+									if vim.tbl_contains({ "Path" }, ctx.source_name) then
+										local dev_icon, dev_hl = require("nvim-web-devicons").get_icon(ctx.label)
+										if dev_icon then
+											hl = dev_hl
+										end
+									end
+									return hl
+								end,
+							},
+						},
+					},
+				},
 			},
 
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
-				default = { "i18n", "lsp", "path", "snippets", "buffer", "emoji" },
+				default = { "lsp", "path", "snippets", "buffer" },
 				per_filetype = {
 					lua = { inherit_defaults = true, "lazydev" },
 				},
@@ -75,33 +111,6 @@ return {
 						-- make lazydev completions top priority (see `:h blink.cmp`)
 						score_offset = 100,
 					},
-					i18n = {
-						name = "i18n",
-						module = "i18n.integration.blink_source",
-						opts = {
-							-- future options can be placed here
-						},
-					},
-					emoji = {
-						module = "blink-emoji",
-						name = "Emoji",
-						score_offset = 15, -- Tune by preference
-						opts = {
-							insert = true, -- Insert emoji (default) or complete its name
-							---@type string|table|fun():table
-							trigger = function()
-								return { ":" }
-							end,
-						},
-						should_show_items = function()
-							return vim.tbl_contains(
-								-- Enable emoji completion only for git commits and markdown.
-								-- By default, enabled for all file-types.
-								{ "gitcommit", "markdown" },
-								vim.o.filetype
-							)
-						end,
-					},
 				},
 			},
 
@@ -110,7 +119,7 @@ return {
 			-- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
 			--
 			-- See the fuzzy documentation for more information
-			fuzzy = { implementation = "prefer_rust_with_warning" },
+			fuzzy = { implementation = "rust" },
 			signature = { enabled = true },
 		},
 		opts_extend = { "sources.default" },

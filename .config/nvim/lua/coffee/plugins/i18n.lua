@@ -13,7 +13,7 @@ return {
 				auto_detect = {
 					enabled = true,
 					root_dirs = { "src", "app" }, -- directories to scan
-					locale_dir_names = { "locales", "i18n", "content" }, -- locale directory names
+					locale_dir_names = { "locales", "messages", "i18n" }, -- locale directory names
 					extensions = { "json", "ts" }, -- supported file extensions
 					max_depth = 6, -- max directory depth to scan
 					notify = true, -- show auto-detect summary
