@@ -18,6 +18,7 @@ return {
 				},
 			},
 			"onsails/lspkind.nvim",
+			"timrydefalk/blink-cmp-emoji",
 		},
 		build = function()
 			-- build the fuzzy matcher, optionally add a timeout to `pwait(timeout_ms)`
@@ -61,6 +62,7 @@ return {
 					selection = { preselect = false, auto_insert = true },
 				},
 				menu = {
+					-- LSPKind and NVIM Web Devicons
 					draw = {
 						components = {
 							kind_icon = {
@@ -100,7 +102,7 @@ return {
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "lsp", "path", "snippets", "buffer", "emoji" },
 				per_filetype = {
 					lua = { inherit_defaults = true, "lazydev" },
 				},
@@ -110,6 +112,16 @@ return {
 						module = "lazydev.integrations.blink",
 						-- make lazydev completions top priority (see `:h blink.cmp`)
 						score_offset = 100,
+					},
+					emoji = {
+						module = "blink-cmp-emoji",
+						name = "blink-cmp-emoji",
+						max_items = 10,
+						min_keyword_length = 1,
+						score_offset = 10,
+						opts = {
+							trigger = ":",
+						},
 					},
 				},
 			},
