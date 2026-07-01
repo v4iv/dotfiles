@@ -72,7 +72,7 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
   - to update
 
     ```
-    git -C " ${ZSH_CUSTOM:-$ HOME/.oh-my-zsh/custom}/themes/powerlevel10k" pull
+    git -C "${ZSH_CUSTOM:-$ HOME/.oh-my-zsh/custom}/themes/powerlevel10k" pull
     ```
 
   - to uninstall
