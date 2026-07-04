@@ -1,28 +1,37 @@
 return {
 	{
-		"yelog/i18n.nvim",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			-- optional pickers:
-			-- "folke/snacks.nvim",
-			-- 'ibhagwan/fzf-lua',
-			-- 'nvim-telescope/telescope.nvim',
+		"strehk/lazy-watson",
+		ft = { "javascript", "typescript", "svelte", "javascriptreact", "typescriptreact" },
+		opts = {},
+		keys = {
+			{
+				"<leader>wt",
+				function()
+					require("lazy-watson").toggle()
+				end,
+				desc = "Toggle Watson Preview",
+			},
+			{
+				"<leader>wl",
+				function()
+					require("lazy-watson").select_locale()
+				end,
+				desc = "Select Locale",
+			},
+			{
+				"<leader>wr",
+				function()
+					require("lazy-watson").refresh()
+				end,
+				desc = "Refresh Translations",
+			},
+			{
+				"<leader>wh",
+				function()
+					require("lazy-watson").show_hover()
+				end,
+				desc = "Show Hover Preview",
+			},
 		},
-		config = function()
-			require("i18n").setup({
-				auto_detect = {
-					enabled = true,
-					root_dirs = { "src", "app" }, -- directories to scan
-					locale_dir_names = { "locales", "messages", "i18n" }, -- locale directory names
-					extensions = { "json", "ts" }, -- supported file extensions
-					max_depth = 6, -- max directory depth to scan
-					notify = true, -- show auto-detect summary
-				},
-				-- locales will also be auto-detected if not specified
-				i18n_keys = {
-					popup_type = "snacks",
-				},
-			})
-		end,
 	},
 }
