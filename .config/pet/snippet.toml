@@ -100,3 +100,33 @@
   Output = ""
   Tag = []
   command = "brew deps --include-build --tree $(brew leaves)"
+
+[[Snippets]]
+  Description = "Update Powerlevel10k"
+  Output = ""
+  Tag = []
+  command = "git -C \"${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k\" pull"
+
+[[Snippets]]
+  Description = "Update fzf-tab"
+  Output = ""
+  Tag = []
+  command = "git -C \"${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fzf-tab\" pull"
+
+[[Snippets]]
+  Description = "Update zsh-completions"
+  Output = ""
+  Tag = []
+  command = "git -C \"${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-completions\" pull"
+
+[[Snippets]]
+  Description = "Update zsh-autosuggestions"
+  Output = ""
+  Tag = []
+  command = "git -C \"${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions\" pull"
+
+[[Snippets]]
+  Description = "Update fast-syntax-highlighting"
+  Output = ""
+  Tag = []
+  command = "git -C \"${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting\" pull"
