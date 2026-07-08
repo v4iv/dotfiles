@@ -25,7 +25,7 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
   - install formulas
 
     ```
-    brew install bat btop cava chafa diff-so-fancy eza fd figlet fzf gcc lolcat luarocks make mermaid-cli neovim pet pipx \
+    brew install bat btop cava chafa diff-so-fancy eza fd figlet fzf gcc gh lolcat luarocks make mermaid-cli neovim pet pipx \
       reattach-to-user-namespace ripgrep rmlint stow tectonic thefuck tmux tree tree-sitter-cli yazi zoxide
     ```
 

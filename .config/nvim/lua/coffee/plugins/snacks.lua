@@ -90,6 +90,7 @@ return {
 							"**/.node-gyp/**",
 							"**/.svelte-kit/**",
 							"**/.astro/**",
+							"**/.netlify/**",
 						},
 					},
 
@@ -127,6 +128,7 @@ return {
 							"**/.node-gyp/**",
 							"**/.svelte-kit/**",
 							"**/.astro/**",
+							"**/.netlify/**",
 						},
 					},
 
