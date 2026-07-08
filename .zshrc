@@ -57,18 +57,18 @@ bindkey '^[[B' history-search-forward
 eval "$(fzf --zsh)"
 
 # --- setup fzf theme ---
-fg="#CDD6F4"
-bg="#1E1E2E"
-bg_plus="#313244"
-spinner="#F5E0DC"
-hl="#F38BA8"
-header="#F38BA8"
-info="#CBA6F7"
-pointer="#F5E0DC"
-marker="#B4BEFE"
-fg_plus="#CDD6F4"
-prompt_color="#CBA6F7"
-hl_plus="#F38BA8"
+fg="#f8f8f2"
+bg="#282a36"
+hl="#bd93f9"
+fg_plus="#f8f8f2"
+bg_plus="#44475a"
+hl_plus="#bd93f9"
+info="#ffb86c"
+prompt_color="#50fa7b"
+pointer="#ff79c6"
+marker="#ff79c6"
+spinner="#ffb86c"
+header="#6272a4"
 selected_bg="#45475A"
 border="#6C7086",
 label="#CDD6F4"
@@ -147,13 +147,16 @@ eval "$(zoxide init --cmd cd zsh)"
 # ---- thefuck ----
 eval $(thefuck --alias)
 
-# --- Yazi Setup ---
+# ---- bat ----
+alias cat="bat"
+
+# ---- Yazi Setup ----
 export EDITOR="nvim"
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+	if cwd="$(command bat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
 		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
