@@ -12,6 +12,7 @@ return {
 			bigfile = { enabled = true },
 			bufdelete = { enabled = true },
 			explorer = { enabled = true, replace_newtr = true, trash = true },
+			gh = { enabled = true },
 			git = { enabled = true },
 			gitbrowse = { enabled = true },
 			image = { enabled = true },
@@ -367,6 +368,35 @@ return {
 					Snacks.picker.recent()
 				end,
 				desc = "Recent",
+			},
+			-- gh
+			{
+				"<leader>gi",
+				function()
+					Snacks.picker.gh_issue()
+				end,
+				desc = "GitHub Issues (open)",
+			},
+			{
+				"<leader>gI",
+				function()
+					Snacks.picker.gh_issue({ state = "all" })
+				end,
+				desc = "GitHub Issues (all)",
+			},
+			{
+				"<leader>gp",
+				function()
+					Snacks.picker.gh_pr()
+				end,
+				desc = "GitHub Pull Requests (open)",
+			},
+			{
+				"<leader>gP",
+				function()
+					Snacks.picker.gh_pr({ state = "all" })
+				end,
+				desc = "GitHub Pull Requests (all)",
 			},
 			-- git
 			{
