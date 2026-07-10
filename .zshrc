@@ -5,12 +5,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# zsh-completions
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/vaibhav/.docker/completions $fpath)
 # End of Docker CLI completions
-
-# zsh-completions
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 # bun completions
 [ -s "/Users/vaibhav/.bun/_bun" ] && source "/Users/vaibhav/.bun/_bun"
@@ -27,7 +27,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
-plugins=(git web-search fzf-tab zsh-autosuggestions fast-syntax-highlighting ssh-agent)
+plugins=(git web-search fzf-tab zsh-autosuggestions fast-syntax-highlighting ssh-agent deno bun fzf)
 
 source $ZSH/oh-my-zsh.sh
 
