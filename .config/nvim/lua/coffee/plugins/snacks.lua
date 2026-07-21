@@ -130,6 +130,7 @@ return {
 							"**/.svelte-kit/**",
 							"**/.astro/**",
 							"**/.netlify/**",
+							"**/generated/**",
 						},
 					},
 

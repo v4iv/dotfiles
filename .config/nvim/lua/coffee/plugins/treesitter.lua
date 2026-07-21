@@ -40,6 +40,9 @@ return {
 			})
 			-- use bash parser for zsh files
 			vim.treesitter.language.register("bash", "zsh")
+			vim.keymap.set("n", "<leader>ti", "<cmd>InspectTree<CR>", {
+				desc = "Inspect Tree-sitter tree",
+			})
 		end,
 	},
 }
