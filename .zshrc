@@ -56,7 +56,6 @@ plugins=(
   zsh-autosuggestions
   fast-syntax-highlighting
   fzf-tab
-  zsh-defer
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -85,11 +84,7 @@ setopt inc_append_history
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
-# ---- FZF -----
-
-# Set up fzf key bindings and fuzzy completion
-eval "$(fzf --zsh)"
-
+# ---- FZF (already initialized in omz plugins) -----
 # --- setup fzf theme ---
 fg="#f8f8f2"
 bg="#282a36"
@@ -134,7 +129,7 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-show_file_or_dir_preview="if [ -d "{}" ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 
 export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
@@ -168,10 +163,16 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
 zstyle ':completion:*' menu no
 # preview directory's content with eza when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:*' fzf-preview '
+if [[ -d "$realpath" ]]; then
+    eza --tree --icons=always --color=always "$realpath" | head -200
+elif [[ -f "$realpath" ]]; then
+    bat --style=numbers --color=always --line-range=:500 "$realpath"
+fi
+'
 # custom fzf flags
 # NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
-zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
+zstyle ':fzf-tab:*' fzf-flags ${=FZF_DEFAULT_OPTS} --bind=tab:accept
 # switch group using `<` and `>`
 zstyle ':fzf-tab:*' switch-group '<' '>'
 # "popup" feature for tmux
@@ -179,8 +180,6 @@ zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 # completion cache optimization
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.cache/zsh
-# completion matching
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # ---- Eza (better ls) ----
 alias ls="eza --icons=always"
