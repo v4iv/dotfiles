@@ -150,6 +150,13 @@ This repository uses symbolic links (`symlinks`) to manage your configurations.
         ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
       ```
 
+    - `zsh-defer` omz method
+
+      ```
+      git clone https://github.com/romkatv/zsh-defer.git \
+        ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-defer
+      ```
+
 ### Installation
 
 - Clone `dotfiles` repository in your `$HOME`

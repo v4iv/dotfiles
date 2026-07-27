@@ -1,7 +1,7 @@
 {
   "baleia.nvim": { "branch": "main", "commit": "710537ff5cd669c5a76c5f5b6a9169fd9b913d18" },
   "blink-cmp-emoji": { "branch": "main", "commit": "3404aa337196c61b6501072be046af23ba5cd0fe" },
-  "blink.cmp": { "branch": "main", "commit": "61418c03ae0e7f93c8980f5a577999af32de9e72" },
+  "blink.cmp": { "branch": "main", "commit": "88f53e05dc26f7a5c152b552a9e7ab176c80fb09" },
   "blink.download": { "branch": "main", "commit": "5876dd95deeb70aadbe9f1c0b7117a135061cdac" },
   "blink.lib": { "branch": "main", "commit": "5876dd95deeb70aadbe9f1c0b7117a135061cdac" },
   "blink.pairs": { "branch": "main", "commit": "aad9046bc4670dc91301cd62a6948feb36c55f4a" },

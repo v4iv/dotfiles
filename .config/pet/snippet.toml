@@ -130,3 +130,9 @@
   Output = ""
   Tag = []
   command = "git -C \"${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting\" pull"
+
+[[Snippets]]
+  Description = "Update zsh-defer"
+  Output = ""
+  Tag = []
+  command = "git -C \"${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-defer\" pull"

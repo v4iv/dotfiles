@@ -5,6 +5,26 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# ---- PATH: Metasploit Framework, PostgreSQL, openjdk, libpq, .local/bin to PATH, created by `pipx` ----
+typeset -U path
+
+path=(
+/opt/homebrew/opt/openjdk/bin
+    /opt/homebrew/opt/postgresql@15/bin
+    /opt/homebrew/opt/libpq/bin
+    /opt/metasploit-framework/bin
+    ~/.local/bin
+    $path
+)
+
+# pnpm
+export PNPM_HOME="/Users/vaibhav/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
+
 # zsh-completions
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
@@ -18,8 +38,6 @@ fpath=(/Users/vaibhav/.docker/completions $fpath)
 # OpenClaw Completion
 source "$HOME/.openclaw/completions/openclaw.zsh"
 
-autoload -Uz compinit && compinit
-
 # ---- oh my zsh ----
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -27,7 +45,19 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
-plugins=(git web-search fzf-tab zsh-autosuggestions fast-syntax-highlighting ssh-agent deno bun fzf)
+plugins=(
+  git
+  zsh-defer
+  web-search
+  ssh-agent
+  deno
+  bun
+  fzf
+  zsh-autosuggestions
+  fast-syntax-highlighting
+  fzf-tab
+  zsh-defer
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -35,17 +65,21 @@ source $ZSH/oh-my-zsh.sh
 alias reload-zsh="source ~/.zshrc"
 alias edit-zsh="nvim ~/.zshrc"
 alias reload-tmux="tmux source ~/.tmux.conf"
-alias brewlist="brew leaves | xargs brew desc --eval-all"
+alias brewlist="brew leaves | xargs -I{} brew desc {}"
 alias casklist="brew ls --casks | xargs brew desc --eval-all"
 
 # history setup
 HISTFILE=$HOME/.zhistory
-SAVEHIST=10000
-HISTSIZE=9999
+SAVEHIST=100000
+HISTSIZE=100000
 setopt share_history 
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_verify
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt hist_find_no_dups
+setopt inc_append_history
 
 # completion using arrow keys (based on history)
 bindkey '^[[A' history-search-backward
@@ -70,14 +104,21 @@ marker="#ff79c6"
 spinner="#ffb86c"
 header="#6272a4"
 selected_bg="#45475A"
-border="#6C7086",
+border="#6C7086"
 label="#CDD6F4"
 
 export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${hl},fg+:${fg_plus},bg+:${bg_plus},hl+:${hl_plus},info:${info},prompt:${prompt_color},pointer:${pointer},marker:${marker},spinner:${spinner},header:${header},selected-bg:${selected_bg},border:${border},label:${label} --height=40%"
 
 # -- Use fd instead of fzf --
 
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_DEFAULT_COMMAND="fd \
+  --hidden \
+  --strip-cwd-prefix \
+  --exclude .git \
+  --exclude node_modules \
+  --exclude dist \
+  --exclude .next \
+  --exclude .svelte-kit"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
@@ -93,7 +134,7 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+show_file_or_dir_preview="if [ -d "{}" ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 
 export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
@@ -135,6 +176,11 @@ zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
 zstyle ':fzf-tab:*' switch-group '<' '>'
 # "popup" feature for tmux
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+# completion cache optimization
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.cache/zsh
+# completion matching
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # ---- Eza (better ls) ----
 alias ls="eza --icons=always"
@@ -142,13 +188,13 @@ alias ls="eza --icons=always"
 export EZA_CONFIG_DIR="$HOME/.config/eza"
 
 # ---- Zoxide (better cd) ----
-eval "$(zoxide init --cmd cd zsh)"
+zsh-defer eval "$(zoxide init --cmd cd zsh)"
 
 # ---- thefuck ----
-eval $(thefuck --alias)
+zsh-defer eval "$(thefuck --alias)"
 
 # ---- bat ----
-alias cat="bat"
+alias cat="bat --paging=never"
 
 # ---- Yazi Setup ----
 export EDITOR="nvim"
@@ -162,39 +208,23 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-alias python="python3"
+command -v python3 >/dev/null && alias python=python3
 
-# Add .local/bin to PATH, created by `pipx` on 2026-05-11 07:23:06
-export PATH="$PATH:/Users/vaibhav/.local/bin"
-
-# ---- openjdk ----
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-
-# ---- PostgreSQL ---- 
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
-
-# ---- libpq ---- 
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-
-# ---- Metasploit Framework ----
-# export PATH="/opt/metasploit-framework/bin:$PATH"
-PATH=$PATH:/opt/metasploit-framework/bin
-export PATH=$PATH:/opt/metasploit-framework/bin
-
-# pnpm
-export PNPM_HOME="/Users/vaibhav/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end
-
-# NVM related bindings
+# Lazy loaded NVM related bindings
 export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+_lazy_load_nvm() {
+    unset -f nvm node npm npx corepack
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
+    [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+    "$@"
+}
+
+nvm()      { _lazy_load_nvm nvm "$@"; }
+node()     { _lazy_load_nvm node "$@"; }
+npm()      { _lazy_load_nvm npm "$@"; }
+npx()      { _lazy_load_nvm npx "$@"; }
+corepack() { _lazy_load_nvm corepack "$@"; }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
