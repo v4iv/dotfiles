@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# ---- PATH: Metasploit Framework, PostgreSQL, openjdk, libpq, .local/bin to PATH, created by `pipx` ----
+# ---- PATH: Metasploit Framework, PostgreSQL, openjdk, libpq, .local/bin ----
 typeset -U path
 
 path=(
@@ -175,8 +175,8 @@ fi
 zstyle ':fzf-tab:*' fzf-flags ${=FZF_DEFAULT_OPTS} --bind=tab:accept
 # switch group using `<` and `>`
 zstyle ':fzf-tab:*' switch-group '<' '>'
-# "popup" feature for tmux
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+# "popup" feature for tmux disabled coz the popup was way too small
+# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 # completion cache optimization
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.cache/zsh
