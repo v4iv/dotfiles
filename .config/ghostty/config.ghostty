@@ -9,6 +9,7 @@ window-padding-balance = true
 window-padding-x = 1
 window-padding-y = 1
 fullscreen = true
+adjust-cell-height = -16%
 # font configurations
 font-family="0xProto Nerd Font"
 font-size=16
