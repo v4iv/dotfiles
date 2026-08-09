@@ -1,0 +1,15 @@
+theme = "dracula"
+
+[editor.file-picker]
+hidden = false
+
+[keys.normal]
+C-s = ":w" # Maps Ctrl-s to the typable command :w which is an alias for :write (save file)
+g = { a = "code_action" } # Maps `ga` to show possible code actions
+
+[keys.normal.space]
+q = ":q" # quit
+
+[keys.insert]
+"A-x" = "normal_mode"     # Maps Alt-X to enter normal mode
+j = { k = "normal_mode" } # Maps `jk` to exit insert mode
