@@ -8,13 +8,14 @@ return {
 		opts_extend = { "ensure_installed" },
 		opts = {
 			-- LazyVim config for treesitter
-			install_dir = vim.fn.stdpath("data") .. "/site",
 			indent = { enable = true },
 			highlight = {
 				enable = true,
 
 				disable = function(_, buf)
+					local max_filesize = 100 * 1024
 					local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+
 					if ok and stats and stats.size > max_filesize then
 						Snacks.notify.warn(
 							"File larger than 100KB treesitter disabled for performance",
@@ -24,22 +25,15 @@ return {
 					end
 				end,
 			},
-			folds = { enable = true },
 			ensure_installed = "all",
 		},
-		config = function()
-			-- Automatically start treesitter for supported filetypes
-			vim.api.nvim_create_autocmd("FileType", {
-				callback = function(args)
-					local lang = vim.treesitter.language.get_lang(args.match) or args.match
-					local installed = require("nvim-treesitter").get_installed("parsers")
-					if vim.tbl_contains(installed, lang) then
-						vim.treesitter.start(args.buf)
-					end
-				end,
-			})
+
+		config = function(_, opts)
+			require("nvim-treesitter").setup(opts)
+
 			-- use bash parser for zsh files
 			vim.treesitter.language.register("bash", "zsh")
+
 			vim.keymap.set("n", "<leader>ti", "<cmd>InspectTree<CR>", {
 				desc = "Inspect Tree-sitter tree",
 			})

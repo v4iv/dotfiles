@@ -50,7 +50,7 @@ opt.whichwrap:append("<>[]hl")
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
-vim.o.confirm = true
+o.confirm = true
 
 -- LSP
 local severity = vim.diagnostic.severity
@@ -83,6 +83,13 @@ vim.diagnostic.config({
 		source = "always",
 	},
 })
+
+-- folding
+o.foldmethod = "expr"
+o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+o.foldlevel = 99
+o.foldlevelstart = 99
+o.foldenable = true
 
 -- don't show Process exited 0
 vim.api.nvim_clear_autocmds({ group = "nvim.terminal", event = "TermClose" })
