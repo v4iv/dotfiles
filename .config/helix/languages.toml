@@ -50,7 +50,7 @@ language-servers = [ "typescript-language-server", "tailwindcss-ls" ]
 
 [[language]]
 name = "svelte"
-language-servers = [ "svelteserver", "tailwindcss-ls" ]
+language-servers = [ "svelteserver", "tailwindcss-ls", "emmet-ls" ]
 
 [language-server.deno-lsp]
 command = "deno"
@@ -68,7 +68,27 @@ args = ["--stdio"]
 command = "emmet-ls"
 
 [[language]]
+name = "tsx"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+language-servers = ["typescript-language-server", "emmet-ls"]
+
+[[language]]
+name = "svelte"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+language-servers = ["svelteserver", "emmet-ls"]
+
+# https://github.com/olrtg/emmet-language-server?tab=readme-ov-file#helix
+[[language]]
 name = "html"
+roots = [".git"]
+formatter = { command = "prettier", args = ["--parser", "html"] }
+language-servers = ["vscode-html-language-server", "emmet-ls"]
+
+[[language]]
+name = "html"
+auto-format = true
 language-servers = ["vscode-html-language-server", "emmet-ls"]
 
 # append language server to existed languages
@@ -80,6 +100,47 @@ language-servers = [ "scls", "rust-analyzer" ]
 name = "git-commit"
 language-servers = [ "scls" ]
 
+[language-server.svelteserver]
+command = "svelteserver"
+args = ["--stdio"]
+
+[language-server.svelteserver.config.configuration.typescript]
+inlayHints.parameterTypes.enabled = true
+inlayHints.variableTypes.enabled = true
+inlayHints.propertyDeclarationTypes.enabled = true
+inlayHints.functionLikeReturnTypes.enabled = true
+inlayHints.enumMemberValues.enabled = true
+inlayHints.parameterNames.enabled = "all"
+
+[language-server.svelteserver.config.configuration.javascript]
+inlayHints.parameterTypes.enabled = true
+inlayHints.variableTypes.enabled = true
+inlayHints.propertyDeclarationTypes.enabled = true
+inlayHints.functionLikeReturnTypes.enabled = true
+inlayHints.enumMemberValues.enabled = true
+inlayHints.parameterNames.enabled = "all"
+
+[language-server.vscode-eslint-language-server]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
+[language-server.vscode-eslint-language-server.config]
+validate = "on"
+experimental = { useFlatConfig = false }
+rulesCustomizations = []
+run = "onType"
+problems = { shortenToSingleLine = false }
+nodePath = ""
+
+[language-server.vscode-eslint-language-server.config.codeAction.disableRuleComment]
+enable = true
+location = "separateLine"
+
+[language-server.vscode-eslint-language-server.config.codeAction.showDocumentation]
+enable = true
+
+[language-server.vscode-eslint-language-server.config.workingDirectory]
+mode = "location"
 # etc..
 
 # introduce a new language to enable completion on any doc by forcing set language with :set-language stub

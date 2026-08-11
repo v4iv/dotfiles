@@ -4,11 +4,41 @@ theme = "dracula"
 hidden = false
 
 [keys.normal]
-C-s = ":w" # Maps Ctrl-s to the typable command :w which is an alias for :write (save file)
-g = { a = "code_action" } # Maps `ga` to show possible code actions
+# Maps Ctrl-s to the typable command :w which is an alias for :write (save file)
+C-s = ":w" 
+# Maps `ga` to show possible code actions
+g = { a = "code_action" }
+
+y = ":clipboard-yank-join"
+
+# line-up
+A-u = ["keep_primary_selection","extend_line","yank","move_line_up","open_above","normal_mode","replace_with_yanked", "move_line_down", "move_line_down", "extend_line", "delete_selection", "move_line_up", "move_line_up"]
+# line-down
+A-d = ["keep_primary_selection","extend_line","delete_selection", "paste_after", "move_line_down"]
+
+# yazi explorer
+C-e = [
+  ':sh rm -f /tmp/unique-file',
+  ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
+  ':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':open %sh{cat /tmp/unique-file}',
+  ':redraw',
+]
+
+# lazygit
+C-g = [
+    ":write-all", 
+    ":new", 
+    ":insert-output lazygit", 
+    ":buffer-close!", 
+    ":redraw", 
+    ":reload-all"
+]
 
 [keys.normal.space]
 q = ":q" # quit
+x = ":buffer-close" # close buffer
+n = ":new" # new buffer
 
 [keys.insert]
 "A-x" = "normal_mode"     # Maps Alt-X to enter normal mode
