@@ -41,5 +41,16 @@ x = ":buffer-close" # close buffer
 n = ":new" # new buffer
 
 [keys.insert]
-"A-x" = "normal_mode"     # Maps Alt-X to enter normal mode
-j = { k = "normal_mode" } # Maps `jk` to exit insert mode
+# Maps Alt-X to enter normal mode
+"A-x" = "normal_mode"
+# Maps `jk` to exit insert mode
+j = { k = "normal_mode" } 
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
