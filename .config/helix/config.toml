@@ -1,5 +1,8 @@
 theme = "dracula"
 
+[editor]
+auto-format = true
+
 [editor.file-picker]
 hidden = false
 
@@ -44,13 +47,4 @@ n = ":new" # new buffer
 # Maps Alt-X to enter normal mode
 "A-x" = "normal_mode"
 # Maps `jk` to exit insert mode
-j = { k = "normal_mode" } 
-
-[editor.statusline]
-left = ["mode", "spinner"]
-center = ["file-name"]
-right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
-separator = "│"
-mode.normal = "NORMAL"
-mode.insert = "INSERT"
-mode.select = "SELECT"
+j = { k = "normal_mode" }
