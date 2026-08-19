@@ -66,6 +66,7 @@ alias edit-zsh="nvim ~/.zshrc"
 alias reload-tmux="tmux source ~/.tmux.conf"
 alias brewlist="brew leaves | xargs -I{} brew desc {}"
 alias casklist="brew ls --casks | xargs brew desc --eval-all"
+alias hl="rg --passthu"
 
 # history setup
 HISTFILE=$HOME/.zhistory
