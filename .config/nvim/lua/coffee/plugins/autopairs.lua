@@ -1,18 +1,15 @@
 return {
 	{
 		"saghen/blink.pairs",
-		event = { "BufReadPre", "BufNewFile" },
-		version = "*", -- (recommended) only required with prebuilt binaries
+		dependencies = "saghen/blink.lib",
+		-- download prebuilt binaries from github releases, must be on a versioned release
+		-- build = function()
+		-- 	require("blink.pairs").download():pwait(60000)
+		-- end,
+		-- OR build from source
 		build = function()
 			require("blink.pairs").build():pwait(60000)
 		end,
-		-- download prebuilt binaries from github releases
-		dependencies = "saghen/blink.download",
-		-- OR build from source, requires nightly:
-		-- https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-		-- build = 'cargo build --release',
-		-- If you use nix, you can build from source using latest nightly rust with:
-		-- build = 'nix run .#build-plugin',
 
 		--- @module 'blink.pairs'
 		--- @type blink.pairs.Config
@@ -58,7 +55,7 @@ return {
 					priority = 250,
 				},
 			},
-			debug = false,
+			debug = true,
 		},
 	},
 }
