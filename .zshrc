@@ -18,11 +18,8 @@ path=(
 )
 
 # pnpm
-export PNPM_HOME="/Users/vaibhav/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
+export PNPM_HOME="$HOME/Library/pnpm"
+path=("$PNPM_HOME/bin" $path)
 # pnpm end
 
 # zsh-completions
@@ -66,7 +63,6 @@ alias edit-zsh="nvim ~/.zshrc"
 alias reload-tmux="tmux source ~/.tmux.conf"
 alias brewlist="brew leaves | xargs -I{} brew desc {}"
 alias casklist="brew ls --casks | xargs brew desc --eval-all"
-alias hl="rg --passthu"
 
 # history setup
 HISTFILE=$HOME/.zhistory
@@ -79,7 +75,6 @@ setopt hist_verify
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt hist_find_no_dups
-setopt inc_append_history
 
 # completion using arrow keys (based on history)
 bindkey '^[[A' history-search-backward
