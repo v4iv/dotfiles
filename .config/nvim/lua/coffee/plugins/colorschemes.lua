@@ -7,7 +7,7 @@ return {
 		italic_comments = true,
 		on_colors = function(c)
 			c.bg = "#342A57"
-			c.bg_panel = "#3F3467" -- swapped to keep panel darker than float
+			c.bg_panel = "#3F3467"
 			c.bg_float = "#4F427D"
 		end,
 		on_highlights = function(hl, c)
