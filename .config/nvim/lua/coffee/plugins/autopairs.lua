@@ -55,7 +55,7 @@ return {
 					priority = 250,
 				},
 			},
-			debug = true,
+			debug = false,
 		},
 	},
 }
