@@ -83,7 +83,7 @@ bindkey '^[[B' history-search-forward
 # ---- FZF (already initialized in omz plugins) -----
 # --- setup fzf theme ---
 fg="#f8f8f2"
-bg="#282a36"
+bg="#473B72"
 hl="#bd93f9"
 fg_plus="#f8f8f2"
 bg_plus="#44475a"
