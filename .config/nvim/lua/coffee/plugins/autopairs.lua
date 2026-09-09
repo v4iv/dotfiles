@@ -1,6 +1,7 @@
 return {
 	{
 		"saghen/blink.pairs",
+		event = "VeryLazy",
 		dependencies = "saghen/blink.lib",
 		-- download prebuilt binaries from github releases, must be on a versioned release
 		-- build = function()
