@@ -1,0 +1,9 @@
+inherits = "dracula"
+
+"ui.window" = {fg="foreground", bg="background_float"}
+"ui.popup" = {fg="foreground", bg="background_panel"}
+
+[palette]
+background = "#342A57"
+background_panel = "#3F3467"
+background_float = "#4F427D"
