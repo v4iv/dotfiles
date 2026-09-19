@@ -205,21 +205,10 @@ function y() {
 
 command -v python3 >/dev/null && alias python=python3
 
-# Lazy loaded NVM related bindings
+# NVM related bindings
 export NVM_DIR="$HOME/.nvm"
-
-_lazy_load_nvm() {
-    unset -f nvm node npm npx corepack
-    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
-    [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-    "$@"
-}
-
-nvm()      { _lazy_load_nvm nvm "$@"; }
-node()     { _lazy_load_nvm node "$@"; }
-npm()      { _lazy_load_nvm npm "$@"; }
-npx()      { _lazy_load_nvm npx "$@"; }
-corepack() { _lazy_load_nvm corepack "$@"; }
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
