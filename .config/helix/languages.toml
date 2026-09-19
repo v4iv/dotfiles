@@ -1,0 +1,91 @@
+# ==========================================
+# 1. Custom Server Definitions
+# ==========================================
+
+[language-server.emmet-ls]
+command = "emmet-ls"
+args = ["--stdio"]
+
+[language-server.vtsls]
+command = "vtsls"
+args = ["--stdio"]
+config.hostInfo = "helix"
+
+# Recommended vtsls settings for better auto-completion
+[language-server.vtsls.config.typescript]
+suggest = { completeFunctionCalls = true }
+updateImportsOnFileMove = { enabled = "always" }
+
+[language-server.vtsls.config.javascript]
+suggest = { completeFunctionCalls = true }
+updateImportsOnFileMove = { enabled = "always" }
+
+# ==========================================
+# 2. Language Mappings & Multi-LSP Setup
+# ==========================================
+
+# --- Svelte ---
+[[language]]
+name = "svelte"
+language-servers = ["svelteserver", "tailwindcss-ls", "emmet-ls"]
+
+# --- Astro ---
+[[language]]
+name = "astro"
+language-servers = ["astro-ls", "tailwindcss-ls", "emmet-ls"]
+
+# --- HTML & CSS ---
+[[language]]
+name = "html"
+language-servers = ["vscode-html-language-server", "tailwindcss-ls", "emmet-ls"]
+
+[[language]]
+name = "css"
+language-servers = ["vscode-css-language-server", "tailwindcss-ls", "emmet-ls"]
+
+[[language]]
+name = "json"
+language-servers = ["vscode-json-language-server"]
+
+# --- TypeScript & JavaScript (Using vtsls) ---
+[[language]]
+name = "typescript"
+language-servers = ["vtsls"]
+
+[[language]]
+name = "javascript"
+language-servers = ["vtsls"]
+
+# --- TSX & JSX (React UI components) ---
+[[language]]
+name = "tsx"
+language-servers = ["vtsls", "tailwindcss-ls", "emmet-ls"]
+
+[[language]]
+name = "jsx"
+language-servers = ["vtsls", "tailwindcss-ls", "emmet-ls"]
+
+# --- Backend & Tools ---
+[[language]]
+name = "python"
+language-servers = ["pyright"]
+
+[[language]]
+name = "prisma"
+language-servers = ["prisma-language-server"]
+
+[[language]]
+name = "yaml"
+language-servers = ["yaml-language-server"]
+
+[[language]]
+name = "dockerfile"
+language-servers = ["docker-langserver"]
+
+[[language]]
+name = "docker-compose"
+language-servers = ["docker-compose-langserver", "yaml-language-server"]
+
+[[language]]
+name = "bash"
+language-servers = ["bash-language-server"]

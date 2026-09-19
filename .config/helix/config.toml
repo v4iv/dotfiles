@@ -2,6 +2,7 @@ theme = "cyberpunk"
 
 [editor]
 auto-format = true
+default-yank-register = "+"
 
 [editor.file-picker]
 hidden = false
@@ -11,8 +12,6 @@ hidden = false
 C-s = ":w"
 # Maps `ga` to show possible code actions
 g = { a = "code_action" }
-
-y = ":clipboard-yank-join"
 
 # line-up
 A-u = [
