@@ -1,7 +1,18 @@
 return {
 	{
 		"saghen/blink.cmp",
+
 		event = "VeryLazy",
+		-- use a release tag to download pre-built binaries
+		version = "1.*",
+		-- AND/OR build from source
+		-- build = "cargo build --release",
+		-- build = function()
+		-- 	-- build the fuzzy matcher, optionally add a timeout to `pwait(timeout_ms)`
+		-- 	-- you can use `gb` in `:Lazy` to rebuild the plugin as needed
+		-- 	require("blink.cmp").build():pwait()
+		-- end,
+
 		-- optional: provides snippets for the snippet source
 		dependencies = {
 			"saghen/blink.lib",
@@ -20,11 +31,6 @@ return {
 			"onsails/lspkind.nvim",
 			"timrydefalk/blink-cmp-emoji",
 		},
-		build = function()
-			-- build the fuzzy matcher, optionally add a timeout to `pwait(timeout_ms)`
-			-- you can use `gb` in `:Lazy` to rebuild the plugin as needed
-			require("blink.cmp").build():pwait()
-		end,
 
 		-- If you use nix, you can build from source with:
 		-- build = 'nix run .#build-plugin',
